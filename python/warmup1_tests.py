@@ -1,0 +1,187 @@
+import unittest
+import warmup1
+
+class TestWarmUp1(unittest.TestCase):
+
+    def test_sleep_in(self):
+        self.assertEqual(warmup1.sleep_in(False, False), True)
+        self.assertEqual(warmup1.sleep_in(True, False), False)
+        self.assertEqual(warmup1.sleep_in(False, True), True)
+        self.assertEqual(warmup1.sleep_in(True, True), True)
+    
+    def test_monkey_trouble(self): 
+        self.assertEqual(warmup1.monkey_trouble(True, True), True)
+        self.assertEqual(warmup1.monkey_trouble(False, False), True)
+        self.assertEqual(warmup1.monkey_trouble(True, False), False)
+        self.assertEqual(warmup1.monkey_trouble(False, True), False)
+    
+    def test_sum_double(self):
+        self.assertEqual(warmup1.sum_double(1, 2), 3)
+        self.assertEqual(warmup1.sum_double(3, 2), 5)
+        self.assertEqual(warmup1.sum_double(2, 2), 8)
+        self.assertEqual(warmup1.sum_double(-1, 0), -1)
+        self.assertEqual(warmup1.sum_double(3, 3), 12)
+        self.assertEqual(warmup1.sum_double(0, 0), 0)
+        self.assertEqual(warmup1.sum_double(0, 1), 1)
+        self.assertEqual(warmup1.sum_double(3, 4), 7)
+    
+    def test_diff21(self):
+        self.assertEqual( warmup1.diff_21(19), 2)
+        self.assertEqual( warmup1.diff_21(10), 11)
+        self.assertEqual( warmup1.diff_21(21), 0)
+        self.assertEqual( warmup1.diff_21(22), 2)
+        self.assertEqual( warmup1.diff_21(25), 8)
+        self.assertEqual( warmup1.diff_21(30), 18)
+        self.assertEqual( warmup1.diff_21(0), 21)
+        self.assertEqual( warmup1.diff_21(1), 20)
+        self.assertEqual( warmup1.diff_21(2), 19)
+        self.assertEqual( warmup1.diff_21(-1), 22)
+        self.assertEqual( warmup1.diff_21(-2), 23)
+        self.assertEqual( warmup1.diff_21(50), 58)
+
+    def test_parrot_trouble(self):
+        self.assertEqual(warmup1.parrot_trouble(True, 6), True )
+        self.assertEqual(warmup1.parrot_trouble(True, 7), False)
+        self.assertEqual(warmup1.parrot_trouble(False, 6), False)
+        self.assertEqual(warmup1.parrot_trouble(True, 21), True)
+        self.assertEqual(warmup1.parrot_trouble(False, 21), False)
+        self.assertEqual(warmup1.parrot_trouble(False, 20), False)
+        self.assertEqual(warmup1.parrot_trouble(True, 23), True)
+        self.assertEqual(warmup1.parrot_trouble(False, 23), False)
+        self.assertEqual(warmup1.parrot_trouble(True, 20), False)
+        self.assertEqual(warmup1.parrot_trouble(False, 12), False)
+
+    def test_makes_10(self):
+        self.assertEqual( warmup1.makes_10(9, 10), True)
+        self.assertEqual( warmup1.makes_10(9, 9), False)
+        self.assertEqual( warmup1.makes_10(1, 9), True)
+        self.assertEqual( warmup1.makes_10(10, 1), True)
+        self.assertEqual( warmup1.makes_10(10, 10), True)
+        self.assertEqual( warmup1.makes_10(8, 2), True)
+        self.assertEqual( warmup1.makes_10(8, 3), False)
+        self.assertEqual( warmup1.makes_10(10, 42), True)
+        self.assertEqual( warmup1.makes_10(12, -2), True)
+
+    def test_near_hundred(self):
+        self.assertEqual( warmup1.near_hundred(93), True)
+        self.assertEqual( warmup1.near_hundred(90), True)
+        self.assertEqual( warmup1.near_hundred(89), False)
+        self.assertEqual( warmup1.near_hundred(110), True)
+        self.assertEqual( warmup1.near_hundred(111), False)
+        self.assertEqual( warmup1.near_hundred(121), False)
+        self.assertEqual( warmup1.near_hundred(-101), False)
+        self.assertEqual( warmup1.near_hundred(-209), False)
+        self.assertEqual( warmup1.near_hundred(190), True)
+        self.assertEqual( warmup1.near_hundred(209), True)
+        self.assertEqual( warmup1.near_hundred(0), False)
+        self.assertEqual( warmup1.near_hundred(5), False)
+        self.assertEqual( warmup1.near_hundred(-50), False)
+        self.assertEqual( warmup1.near_hundred(191), True)
+        self.assertEqual( warmup1.near_hundred(189), False)
+        self.assertEqual( warmup1.near_hundred(200), True)
+        self.assertEqual( warmup1.near_hundred(210), True)
+        self.assertEqual( warmup1.near_hundred(211), False)
+        self.assertEqual( warmup1.near_hundred(290), False)
+
+    def test_pos_neg(self):
+        self.assertEqual( warmup1.pos_neg(1, -1, False), True)
+        self.assertEqual( warmup1.pos_neg(-1, 1, False), True)
+        self.assertEqual( warmup1.pos_neg(-4, -5, True), True)
+        self.assertEqual( warmup1.pos_neg(-4, -5, False), False)
+        self.assertEqual( warmup1.pos_neg(-4, 5, False), True)
+        self.assertEqual( warmup1.pos_neg(-4, 5, True), False)
+        self.assertEqual( warmup1.pos_neg(1, 1, False), False)
+        self.assertEqual( warmup1.pos_neg(-1, -1, False), False)
+        self.assertEqual( warmup1.pos_neg(1, -1, True), False)
+        self.assertEqual( warmup1.pos_neg(-1, 1, True), False)
+        self.assertEqual( warmup1.pos_neg(1, 1, True), False)
+        self.assertEqual( warmup1.pos_neg(-1, -1, True), True)
+        self.assertEqual( warmup1.pos_neg(5, -5, False), True)
+        self.assertEqual( warmup1.pos_neg(-6, 6, False), True)
+        self.assertEqual( warmup1.pos_neg(-5, -6, False), False)
+        self.assertEqual( warmup1.pos_neg(-2, -1, False), False)
+        self.assertEqual( warmup1.pos_neg(1, 2, False), False)
+        self.assertEqual( warmup1.pos_neg(-5, 6, True), False)
+        self.assertEqual( warmup1.pos_neg(-5, -5, True), True)
+    
+    def test_not_string(self):
+        self.assertEqual( warmup1.not_string("candy"), "not candy")
+        self.assertEqual( warmup1.not_string("x"), "not x")
+        self.assertEqual( warmup1.not_string("not bad"), "not bad")
+        self.assertEqual( warmup1.not_string("bad"), "not bad")
+        self.assertEqual( warmup1.not_string("not"), "not")
+        self.assertEqual( warmup1.not_string("is not"), "not is not")
+        self.assertEqual( warmup1.not_string("no"), "not no")
+
+    def test_missing_char(self):
+        self.assertEqual( warmup1.missing_char('kitten', 1), 'ktten')
+        self.assertEqual( warmup1.missing_char('kitten', 0), 'itten')
+        self.assertEqual( warmup1.missing_char('kitten', 4), 'kittn')
+        self.assertEqual( warmup1.missing_char('Hi', 0), 'i')
+        self.assertEqual( warmup1.missing_char('Hi', 1), 'H')
+        self.assertEqual( warmup1.missing_char('code', 0), 'ode')
+        self.assertEqual( warmup1.missing_char('code', 1), 'cde')
+        self.assertEqual( warmup1.missing_char('code', 2), 'coe')
+        self.assertEqual( warmup1.missing_char('code', 3), 'cod')
+        self.assertEqual( warmup1.missing_char('chocolate', 8), 'chocolat')
+    
+    def test_front_back(self):
+        self.assertEqual( warmup1.front_back('code'), 'eodc')
+        self.assertEqual( warmup1.front_back('a'), 'a')
+        self.assertEqual( warmup1.front_back('ab'), 'ba')
+        self.assertEqual( warmup1.front_back('abc'), 'cba')
+        self.assertEqual( warmup1.front_back(''), '')
+        self.assertEqual( warmup1.front_back('Chocolate'), 'ehocolatC')
+        self.assertEqual( warmup1.front_back('aavJ'), 'Java')
+        self.assertEqual( warmup1.front_back('hello'), 'oellh')
+    
+    def test_front_3(self):
+        self.assertEqual( warmup1.front_3('Java'), 'JavJavJav')
+        self.assertEqual( warmup1.front_3('Chocolate'), 'ChoChoCho')
+        self.assertEqual( warmup1.front_3('abc'), 'abcabcabc')
+        self.assertEqual( warmup1.front_3('abcXYZ'), 'abcabcabc')
+        self.assertEqual( warmup1.front_3('ab'), 'ababab')
+        self.assertEqual( warmup1.front_3('a'), 'aaa')
+        self.assertEqual( warmup1.front_3(''), '')
+    
+    def test_back_around(self):
+        self.assertEqual( warmup1.back_around('cat'), "tcatt")
+        self.assertEqual( warmup1.back_around('Hello'), "oHelloo")
+        self.assertEqual( warmup1.back_around('a'), "aaa")
+        self.assertEqual( warmup1.back_around('read'), "dreadd")
+        self.assertEqual( warmup1.back_around('boo'), "obooo")
+
+    def test_or_35(self):
+        self.assertEqual( warmup1.or_35(3),True)
+        self.assertEqual( warmup1.or_35(10), True)
+        self.assertEqual( warmup1.or_35(8), False)
+        self.assertEqual( warmup1.or_35(15), True)
+        self.assertEqual( warmup1.or_35(5), True)
+        self.assertEqual( warmup1.or_35(9), True)
+        self.assertEqual( warmup1.or_35(4), False)
+        self.assertEqual( warmup1.or_35(7), False)
+        self.assertEqual( warmup1.or_35(6), True)
+        self.assertEqual( warmup1.or_35(17), False)
+        self.assertEqual( warmup1.or_35(18), True)
+        self.assertEqual( warmup1.or_35(29), False)
+        self.assertEqual( warmup1.or_35(20), True)
+        self.assertEqual( warmup1.or_35(21), True)
+        self.assertEqual( warmup1.or_35(22), False)
+        self.assertEqual( warmup1.or_35(45), True)
+        self.assertEqual( warmup1.or_35(99) , True)
+        self.assertEqual( warmup1.or_35(100), True)
+        self.assertEqual( warmup1.or_35(101), False)
+        self.assertEqual( warmup1.or_35(121), False)
+        self.assertEqual( warmup1.or_35(123), True)
+    
+    def test_front_22(self):
+        self.assertEqual( warmup1.front_22('kitten'), 'kikittenki')
+        self.assertEqual( warmup1.front_22('Ha'), 'HaHaHa')
+        self.assertEqual( warmup1.front_22('abc'), 'ababcab')
+        self.assertEqual( warmup1.front_22('ab'), 'ababab')
+        self.assertEqual( warmup1.front_22('a'), 'aaa')
+        self.assertEqual( warmup1.front_22('') , '')
+        self.assertEqual( warmup1.front_22('Logic'), 'LoLogicLo')
+
+if __name__ == '__main__':
+    unittest.main()
