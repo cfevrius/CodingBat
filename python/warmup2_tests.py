@@ -204,6 +204,55 @@ class TestWarmUp1(unittest.TestCase):
         self.assertEqual(warmup2.lone_teen(6, 18), True)
         self.assertEqual(warmup2.lone_teen(99, 13), True)
         self.assertEqual(warmup2.lone_teen(99, 99), False)
+    
+    def test_del_del(self):
+        self.assertEqual(warmup2.del_del('adelbc'), 'abc')
+        self.assertEqual(warmup2.del_del('adelHello'), 'aHello')
+        self.assertEqual(warmup2.del_del('adedbc'), 'adedbc')
+        self.assertEqual(warmup2.del_del('abcdel'), 'abcdel')
+        self.assertEqual(warmup2.del_del('add'), 'add')
+        self.assertEqual(warmup2.del_del('ad'), 'ad')
+        self.assertEqual(warmup2.del_del('a'), 'a')
+        self.assertEqual(warmup2.del_del(''), '')
+        self.assertEqual(warmup2.del_del('del'), 'del')
+        self.assertEqual(warmup2.del_del('adel'), 'a')
+        self.assertEqual(warmup2.del_del('aadelbb'), 'aadelbb')
+    
+    def test_mix_start(self):
+        self.assertEqual(warmup2.mix_start('mix snacks'), True)
+        self.assertEqual(warmup2.mix_start('pix snacks'), True)
+        self.assertEqual(warmup2.mix_start('piz snacks'), False)
+        self.assertEqual(warmup2.mix_start('nix'), True)
+        self.assertEqual(warmup2.mix_start('ni'), False)
+        self.assertEqual(warmup2.mix_start('n'), False)
+        self.assertEqual(warmup2.mix_start(''), False)
+    
+    def test_start_oz(self):
+        self.assertEqual(warmup2.start_oz('ozymandias'), 'oz')
+        self.assertEqual(warmup2.start_oz('bzoo'), 'z')
+        self.assertEqual(warmup2.start_oz('oxx'), 'o')
+        self.assertEqual(warmup2.start_oz('oz'), 'oz')
+        self.assertEqual(warmup2.start_oz('ounce'), 'o')
+        self.assertEqual(warmup2.start_oz('o'), 'o')
+        self.assertEqual(warmup2.start_oz('abc'), '')
+        self.assertEqual(warmup2.start_oz(''), '')
+        self.assertEqual(warmup2.start_oz('zoo'), '')
+        self.assertEqual(warmup2.start_oz('aztec'), 'z')
+        self.assertEqual(warmup2.start_oz('zzzz'), 'z')
+        self.assertEqual(warmup2.start_oz('oznic'), 'oz')
+    
+    def test_int_max(self):
+        self.assertEqual(warmup2.int_max(1, 2, 3), 3)
+        self.assertEqual(warmup2.int_max(1, 3, 2), 3)
+        self.assertEqual(warmup2.int_max(3, 2, 1), 3)
+        self.assertEqual(warmup2.int_max(9, 3, 3,), 9)
+        self.assertEqual(warmup2.int_max(3, 9, 3), 9)
+        self.assertEqual(warmup2.int_max(3, 3, 9), 9)
+        self.assertEqual(warmup2.int_max(8, 2, 3), 8)
+        self.assertEqual(warmup2.int_max(-3, -1, -2), -1)
+        self.assertEqual(warmup2.int_max(6, 2, 5), 6)
+        self.assertEqual(warmup2.int_max(5, 6, 2), 6)
+        self.assertEqual(warmup2.int_max(5, 2, 6), 6)
 
 if __name__ == '__main__':
     unittest.main()
