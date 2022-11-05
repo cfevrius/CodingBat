@@ -35,33 +35,8 @@ def string_match(a, b):
     occurrences = [i for i in range(lower - 1) if a[i:i+2] == b[i:i+2]]
     return len(occurrences)
 
-def back_around(str):
-    back = str[-1]
-    return back + str + back
-
-def or_35(n):
-    return n % 3 == 0 or n % 5 == 0
-
-def front_22(str):
-    front = str if len(str) < 2 else str[:2]
-    return front + str + front
-
-def start_hi(str):
-    return str.startswith('hi')
-
-def icy_hot(temp1, temp2):
-    one_icy_another_hot = lambda x, y : x < 0 and y > 100
-    return one_icy_another_hot(temp1, temp2) or one_icy_another_hot(temp2, temp1)
-
-def in_1020(a, b):
-    in_range = lambda x : x >= 10 and x <= 20
-    return in_range(a) or in_range(b)
-
-def has_teen(a, b, c):
-    is_teen = lambda x : x >= 13 and x <= 19
-    return is_teen(a) or is_teen(b) or is_teen(c)
-
-def lone_teen(a, b):
-    is_teen = lambda x : x >= 13 and x <= 19
-    teens = [x for x in [a, b] if is_teen(x)]
-    return len(teens) == 1
+def string_x(str):
+    new_str = ''.join([char for char in str if char != 'x'])
+    str_with_start = 'x' + new_str if len(str) > 0 and str[0] == 'x' else new_str
+    str_with_end = str_with_start + 'x' if (len(str) > 1 and str[-1] == 'x') else str_with_start
+    return str_with_end
