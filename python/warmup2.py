@@ -65,3 +65,17 @@ def lone_teen(a, b):
     is_teen = lambda x : x >= 13 and x <= 19
     teens = [x for x in [a, b] if is_teen(x)]
     return len(teens) == 1
+
+def del_del(str):
+    return str[0] + str[4:] if len(str) >= 4 and str[1:4] == 'del' else str
+
+def mix_start(str):
+    return len(str) >= 3 and str[1:3] == 'ix'
+
+def start_oz(str):
+    first_char_is_o = len(str) >= 1 and str[0] == 'o'
+    second_char_is_z = len(str) >= 2 and str[1] == 'z'
+    return ''.join(['o' if first_char_is_o else '', 'z' if second_char_is_z else ''])
+
+def int_max(a, b, c):
+    return max(a, b, c)
