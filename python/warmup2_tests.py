@@ -253,6 +253,46 @@ class TestWarmUp1(unittest.TestCase):
         self.assertEqual(warmup2.int_max(6, 2, 5), 6)
         self.assertEqual(warmup2.int_max(5, 6, 2), 6)
         self.assertEqual(warmup2.int_max(5, 2, 6), 6)
+    
+    def test_close_10(self):
+        self.assertEqual(warmup2.close_10(8, 13), 8)
+        self.assertEqual(warmup2.close_10(13, 8), 8)
+        self.assertEqual(warmup2.close_10(13, 7), 0)
+        self.assertEqual(warmup2.close_10(7, 13), 0)
+        self.assertEqual(warmup2.close_10(9, 13), 9)
+        self.assertEqual(warmup2.close_10(13, 8), 8)
+        self.assertEqual(warmup2.close_10(10, 12), 10)
+        self.assertEqual(warmup2.close_10(11, 10), 10)
+        self.assertEqual(warmup2.close_10(5, 21), 5)
+        self.assertEqual(warmup2.close_10(0, 20), 0)
+        self.assertEqual(warmup2.close_10(10, 10), 0)
+    
+    def test_in_30_50(self):
+        self.assertEqual(warmup2.in_3040(30, 31), True)
+        self.assertEqual(warmup2.in_3040(30, 41), False)
+        self.assertEqual(warmup2.in_3040(40, 50), True)
+        self.assertEqual(warmup2.in_3040(40, 51), False)
+        self.assertEqual(warmup2.in_3040(39, 50), False)
+        self.assertEqual(warmup2.in_3040(50, 39), False)
+        self.assertEqual(warmup2.in_3040(40, 39), True)
+        self.assertEqual(warmup2.in_3040(49, 48), True)
+        self.assertEqual(warmup2.in_3040(50, 40), True)
+        self.assertEqual(warmup2.in_3040(50, 51), False)
+        self.assertEqual(warmup2.in_3040(35, 36), True)
+        self.assertEqual(warmup2.in_3040(35, 45), False)
+    
+    def test_max_1020(self):
+        self.assertEqual(warmup2.max_1020(11, 19), 19)
+        self.assertEqual(warmup2.max_1020(19, 11), 19)
+        self.assertEqual(warmup2.max_1020(11, 9), 11)
+        self.assertEqual(warmup2.max_1020(9, 21), 0)
+        self.assertEqual(warmup2.max_1020(10, 21), 10)
+        self.assertEqual(warmup2.max_1020(21, 10), 10)
+        self.assertEqual(warmup2.max_1020(9, 11), 11)
+        self.assertEqual(warmup2.max_1020(23, 10), 10)
+        self.assertEqual(warmup2.max_1020(20, 10), 20)
+        self.assertEqual(warmup2.max_1020(7, 20), 20)
+        self.assertEqual(warmup2.max_1020(17, 16), 17)
 
 if __name__ == '__main__':
     unittest.main()
