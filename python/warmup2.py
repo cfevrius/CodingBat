@@ -79,3 +79,17 @@ def start_oz(str):
 
 def int_max(a, b, c):
     return max(a, b, c)
+
+def close_10(a, b):
+    a_dist_10 = abs(10 - a)
+    b_dist_10 = abs(10 - b)
+    return 0 if a_dist_10 == b_dist_10 else (a if a_dist_10 < b_dist_10 else b)
+
+def in_3040(a, b):
+    in_30_40 = lambda x : x >= 30 and x <= 40
+    in_40_50 = lambda x : x >= 40 and x <= 50
+    return (in_30_40(a) and in_30_40(b)) or (in_40_50(a) and in_40_50(b))
+
+def max_1020(a, b):
+    nums_in_range = [x for x in [a, b] if x >= 10 and x <= 20]
+    return 0 if len(nums_in_range) == 0 else max(nums_in_range)
