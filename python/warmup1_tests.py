@@ -367,6 +367,41 @@ class TestWarmUp1(unittest.TestCase):
         self.assertEqual(warmup1.max_1020(20, 10), 20)
         self.assertEqual(warmup1.max_1020(7, 20), 20)
         self.assertEqual(warmup1.max_1020(17, 16), 17)
+    
+    def test_string_e(self):
+        self.assertEqual(warmup1.string_e('Hello'), True)
+        self.assertEqual(warmup1.string_e('Heelle'), True)
+        self.assertEqual(warmup1.string_e('Heelele'), False)
+        self.assertEqual(warmup1.string_e('Hll'), False)
+        self.assertEqual(warmup1.string_e('e'), True)
+        self.assertEqual(warmup1.string_e(''), False)
+    
+    def test_last_digit(self):
+        self.assertEqual(warmup1.last_digit(7, 17), True)
+        self.assertEqual(warmup1.last_digit(6, 17), False)
+        self.assertEqual(warmup1.last_digit(3, 113), True)
+        self.assertEqual(warmup1.last_digit(114, 113), False)
+        self.assertEqual(warmup1.last_digit(114, 4), True)
+        self.assertEqual(warmup1.last_digit(10, 0), True)
+        self.assertEqual(warmup1.last_digit(11, 0), False)
+    
+    def test_end_up(self):
+        self.assertEqual(warmup1.end_up('Hello'), 'HeLLO')
+        self.assertEqual(warmup1.end_up('hi there'), 'hi thERE')
+        self.assertEqual(warmup1.end_up('hi'), 'HI')
+        self.assertEqual(warmup1.end_up('woo hoo'), 'woo HOO')
+        self.assertEqual(warmup1.end_up('xyz12'), 'xyZ12')
+        self.assertEqual(warmup1.end_up('x'), 'X')
+        self.assertEqual(warmup1.end_up(''), '')
+    
+    def test_every_nth(self):
+        self.assertEqual(warmup1.every_nth('Miracle', 2), 'Mrce')
+        self.assertEqual(warmup1.every_nth('abcdefg', 2), 'aceg')
+        self.assertEqual(warmup1.every_nth('abcdefg', 3), 'adg')
+        self.assertEqual(warmup1.every_nth('Chocolate', 3), 'Cca')
+        self.assertEqual(warmup1.every_nth('Chocolates', 3), 'Ccas')
+        self.assertEqual(warmup1.every_nth('Chocolates', 4), 'Coe')
+        self.assertEqual(warmup1.every_nth('Chocaltes', 100), 'C')
 
 if __name__ == '__main__':
     unittest.main()
