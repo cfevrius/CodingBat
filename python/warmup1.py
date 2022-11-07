@@ -101,3 +101,20 @@ def in_3040(a, b):
 def max_1020(a, b):
     nums_in_range = [x for x in [a, b] if x >= 10 and x <= 20]
     return 0 if len(nums_in_range) == 0 else max(nums_in_range)
+
+def string_e(str):
+    num_es = str.count('e')
+    return num_es >= 1 and num_es <= 3
+
+def last_digit(a, b):
+    a_last_digit = a % 10
+    b_last_digit = b % 10
+    return a_last_digit == b_last_digit
+
+def end_up(str):
+    front = str[:-3]
+    end = str[-3:]
+    return front + end.upper()
+
+def every_nth(str, n):
+    return str[::n]
