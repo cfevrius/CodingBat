@@ -34,3 +34,9 @@ def string_match(a, b):
     lower = min(len(a), len(b))
     occurrences = [i for i in range(lower - 1) if a[i:i+2] == b[i:i+2]]
     return len(occurrences)
+
+def string_x(str):
+    new_str = ''.join([char for char in str if char != 'x'])
+    str_with_start = 'x' + new_str if len(str) > 0 and str[0] == 'x' else new_str
+    str_with_end = str_with_start + 'x' if (len(str) > 1 and str[-1] == 'x') else str_with_start
+    return str_with_end
