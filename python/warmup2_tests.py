@@ -108,6 +108,16 @@ class TestWarmUp1(unittest.TestCase):
         self.assertEqual(warmup2.string_match('aabbccdd', 'abbbxxd'), 1)
         self.assertEqual(warmup2.string_match('aaxxaaxx', 'iaxxai'), 3)
         self.assertEqual(warmup2.string_match('iaxxai','aaxxaaxx'), 3) 
+    
+    def test_string_x(self):
+        self.assertEqual(warmup2.string_x('xxHxix'), 'xHix')
+        self.assertEqual(warmup2.string_x('abxxxcd'), 'abcd')
+        self.assertEqual(warmup2.string_x('xabxxxcdx'), 'xabcdx')
+        self.assertEqual(warmup2.string_x('xKittenx'), 'xKittenx')
+        self.assertEqual(warmup2.string_x('Hello'), 'Hello')
+        self.assertEqual(warmup2.string_x('xx'), 'xx')
+        self.assertEqual(warmup2.string_x('x'), 'x')
+        self.assertEqual(warmup2.string_x(''), '')
 
 if __name__ == '__main__':
     unittest.main()
