@@ -118,6 +118,40 @@ class TestWarmUp1(unittest.TestCase):
         self.assertEqual(warmup2.string_x('xx'), 'xx')
         self.assertEqual(warmup2.string_x('x'), 'x')
         self.assertEqual(warmup2.string_x(''), '')
+    
+    def test_alt_pairs(self):
+        self.assertEqual(warmup2.alt_pairs('kitten'), 'kien')
+        self.assertEqual(warmup2.alt_pairs('Chocolate'), 'Chole')
+        self.assertEqual(warmup2.alt_pairs('CodingHorror'), 'Congrr')
+        self.assertEqual(warmup2.alt_pairs('yak'), 'ya')
+        self.assertEqual(warmup2.alt_pairs('ya'), 'ya')
+        self.assertEqual(warmup2.alt_pairs('y'), 'y')
+        self.assertEqual(warmup2.alt_pairs(''), '')
+        self.assertEqual(warmup2.alt_pairs('ThisThatTheOther'), 'ThThThth')
+    
+    def test_string_yak(self):
+        self.assertEqual(warmup2.string_yak('yakpak'), 'pak')
+        self.assertEqual(warmup2.string_yak('pakyak'), 'pak')
+        self.assertEqual(warmup2.string_yak('yak123ya'), '123ya')
+        self.assertEqual(warmup2.string_yak('yak'), '')
+        self.assertEqual(warmup2.string_yak('yakxxxyak'), 'xxx')
+        self.assertEqual(warmup2.string_yak('HiyakHi'), 'HiHi')
+        self.assertEqual(warmup2.string_yak('xxxyakyyyakzzz'), 'xxxyyzzz')
+    
+    def test_array_667(self):
+        self.assertEqual(warmup2.array_667([6, 6, 2]), 1)
+        self.assertEqual(warmup2.array_667([6, 6, 2, 6]), 1)
+        self.assertEqual(warmup2.array_667([6, 7, 2, 6]), 1)
+        self.assertEqual(warmup2.array_667([6, 6, 2, 6, 7]), 2)
+        self.assertEqual(warmup2.array_667([1, 6, 3]), 0)
+        self.assertEqual(warmup2.array_667([6, 1]), 0)
+        self.assertEqual(warmup2.array_667([]), 0)
+        self.assertEqual(warmup2.array_667([3, 6, 7, 6]), 1)
+        self.assertEqual(warmup2.array_667([3, 6, 6, 7]), 2)
+        self.assertEqual(warmup2.array_667([6, 3, 6, 6]), 1)
+        self.assertEqual(warmup2.array_667([6, 7, 6, 6]), 2)
+        self.assertEqual(warmup2.array_667([1, 2, 3, 5, 6]), 0)
+        self.assertEqual(warmup2.array_667([1, 2, 3, 6, 6]), 1)
 
 if __name__ == '__main__':
     unittest.main()
