@@ -1,3 +1,5 @@
+import re
+
 def string_times(str, n):
     return str * n
 
@@ -40,3 +42,22 @@ def string_x(str):
     str_with_start = 'x' + new_str if len(str) > 0 and str[0] == 'x' else new_str
     str_with_end = str_with_start + 'x' if (len(str) > 1 and str[-1] == 'x') else str_with_start
     return str_with_end
+
+# Given a string, return a string made of the cars at indexes 0,1, 4,5
+# 8,9 ... so "kittens" yields "kien".
+def alt_pairs(str):
+    return ''.join([char for index, char in enumerate(str) if (index % 4) in {0, 1}])
+
+# Given a string, return a version where all the 'yak' are removed, but the 'a'
+# can by any char. The 'yak' string will not overlap
+#
+# (NOTE) This solution requires the Python regular expression module
+def string_yak(str):
+    return ''.join(re.split('y.k', str))
+
+# Given an array of ints, return the number of times that two 6's are next to each other
+# in the array. Also count instances where the second '6' is actually a 7.
+def array_667(nums):
+    str_nums = ''.join(str(x) for x in nums)
+    return len(re.findall('(?=(6[67]))', str_nums))
+    
