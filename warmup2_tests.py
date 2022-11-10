@@ -163,6 +163,23 @@ class TestWarmUp1(unittest.TestCase):
         self.assertEqual(warmup2.no_triples([1, 1]), True)
         self.assertEqual(warmup2.no_triples([1]), True)
         self.assertEqual(warmup2.no_triples([]), True)
+    
+    def test_has_271(self):
+        self.assertEqual(warmup2.has_271([1, 2, 7, 1]), True)
+        self.assertEqual(warmup2.has_271([1, 2, 8, 1]), False)
+        self.assertEqual(warmup2.has_271([2, 7, 1]), True)
+        self.assertEqual(warmup2.has_271([3, 8, 2]), True)
+        self.assertEqual(warmup2.has_271([2, 7, 3]), True)
+        self.assertEqual(warmup2.has_271([2, 7, 4]), False)
+        self.assertEqual(warmup2.has_271([2, 7, -1]), True)
+        self.assertEqual(warmup2.has_271([2, 7, -2]), False)
+        self.assertEqual(warmup2.has_271([4, 5, 3, 8, 0]), True)
+        self.assertEqual(warmup2.has_271([2, 7, 5, 10, 4]), True)
+        self.assertEqual(warmup2.has_271([2, 7, -2, 4, 9, 3]), True)
+        self.assertEqual(warmup2.has_271([2, 7, 5, 10, 1]), False)
+        self.assertEqual(warmup2.has_271([2, 7, -2, 4, 10, 2]), False)
+        self.assertEqual(warmup2.has_271([1, 1, 4, 9, 0]), False)
+        self.assertEqual(warmup2.has_271([1, 1, 4, 9, 4, 9, 2]), True)
 
 if __name__ == '__main__':
     unittest.main()
