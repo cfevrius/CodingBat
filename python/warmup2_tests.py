@@ -153,5 +153,16 @@ class TestWarmUp1(unittest.TestCase):
         self.assertEqual(warmup2.array_667([1, 2, 3, 5, 6]), 0)
         self.assertEqual(warmup2.array_667([1, 2, 3, 6, 6]), 1)
 
+    def test_no_triples(self):
+        self.assertEqual(warmup2.no_triples([1, 1, 2, 2, 1]), True)
+        self.assertEqual(warmup2.no_triples([1, 1, 2, 2, 2, 1]), False)
+        self.assertEqual(warmup2.no_triples([1, 1, 1, 2, 2, 2, 1]), False)
+        self.assertEqual(warmup2.no_triples([1, 1, 2, 2, 1, 2, 1]), True)
+        self.assertEqual(warmup2.no_triples([1, 2, 1]), True)
+        self.assertEqual(warmup2.no_triples([1, 1, 1]), False)
+        self.assertEqual(warmup2.no_triples([1, 1]), True)
+        self.assertEqual(warmup2.no_triples([1]), True)
+        self.assertEqual(warmup2.no_triples([]), True)
+
 if __name__ == '__main__':
     unittest.main()
