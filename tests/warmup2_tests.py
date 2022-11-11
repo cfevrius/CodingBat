@@ -1,5 +1,8 @@
+import sys
+sys.path.append('')
+
 import unittest
-import warmup2
+import solutions.warmup2 as warmup2
 
 class TestWarmUp1(unittest.TestCase):
     def test_string_times(self):
@@ -22,6 +25,30 @@ class TestWarmUp1(unittest.TestCase):
         self.assertEqual(warmup2.front_times('A', 4), 'AAAA')
         self.assertEqual(warmup2.front_times('', 4), '')
         self.assertEqual(warmup2.front_times('Abc', 0), '')
+    
+    def test_count_xx(self):
+        self.assertEqual(warmup2.count_xx('abcxx'), 1)
+        self.assertEqual(warmup2.count_xx('xxx'), 2)
+        self.assertEqual(warmup2.count_xx('xxxx'), 3)
+        self.assertEqual(warmup2.count_xx('abc'), 0)
+        self.assertEqual(warmup2.count_xx('Hello there'), 0)
+        self.assertEqual(warmup2.count_xx('Hexxo thxxe'), 2)
+        self.assertEqual(warmup2.count_xx(''), 0)
+        self.assertEqual(warmup2.count_xx('Kittens'), 0)
+        self.assertEqual(warmup2.count_xx('Kittensxxx'), 2)
+    
+    def test_double_x(self):
+        self.assertEqual(warmup2.double_x('axxbb'), True)
+        self.assertEqual(warmup2.double_x('axaxax'), False)
+        self.assertEqual(warmup2.double_x('xxxxx'), True)
+        self.assertEqual(warmup2.double_x('xaxxx'), False)
+        self.assertEqual(warmup2.double_x('aaaax'), False)
+        self.assertEqual(warmup2.double_x(''), False)
+        self.assertEqual(warmup2.double_x('abc'), False)
+        self.assertEqual(warmup2.double_x('x'), False)
+        self.assertEqual(warmup2.double_x('xx'), True)
+        self.assertEqual(warmup2.double_x('xax'), False)
+        self.assertEqual(warmup2.double_x('xaxx'), False)
 
     def test_string_bits(self):
         self.assertEqual(warmup2.string_bits('Hello'), 'Hlo')

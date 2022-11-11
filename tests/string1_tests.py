@@ -1,5 +1,8 @@
+import sys
+sys.path.append('')
+
 import unittest
-import string1
+import solutions.string1 as string1
 
 class TestString1(unittest.TestCase):
     def test_hello_names(self):

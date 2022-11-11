@@ -16,18 +16,19 @@ def front_times(str, n):
 # Count the number of "xx" in the given string. We'll say that 
 # overlapping is allowed, so "xxx" contains 2 "xx".
 #
-# (NOTE): Find non-regex soution
 # (NOTE) Look into regex solution.
-def countXX(str):
-    return None
+def count_xx(str):
+    matches = [i for i, _ in enumerate(str[:-1]) if str[i:i+2] == 'xx']
+    return len(matches)
 
 # Given a string, return true if the first instance of "x" in 
 # the string is immediately followed by another "x".
 # 
-# (NOTE): Find non-regex soution
 # (NOTE) Look into regex solution.
-def doubleX(str):
-    return None
+def double_x(str):
+    first_occur = str.find('x')
+    second_occur = str.find('x', first_occur + 1)
+    return second_occur == (first_occur + 1) 
 
 # Given a string, return a new string made of every other char 
 # starting with the first, so "Hello" yields "Hlo".
@@ -42,16 +43,18 @@ def string_splosion(str):
 # Given a string, return the count of the number of times that a substring 
 # length 2 appears in the string and also as the last 2 chars of the string, 
 # so "hixxxhi" yields 1 (we won't count the end substring).
+# 
+# (NOTE) Look into regex solution.
 def last2(str):
     search_str = str[-2:]
     occurrences = [i for i in range(len(str)) if str.startswith(search_str, i, -1)]
     return len(occurrences)
 
 # Given an array of ints, return the number of 9's in the array.
-# 
-# (NOTE) Look into regex solution.
 def array_count9(nums):
     return len([i for i in nums if i == 9])
+    # str_nums = ''.join([str(x) for x in nums])
+    # return len(re.findall('9', str_nums))
 
 # Given an array of ints, return true if one of the first 4 elements in the array 
 # is a 9. The array length may be less than 4.
@@ -65,7 +68,7 @@ def array_front9(nums):
 # 
 # (NOTE) Look into regex solution.
 def array123(nums):
-    occurrences = [i for i in range(len(nums) - 2) if nums[i:i+3] == [1, 2, 3]]
+    occurrences = [i for i, _ in enumerate(nums[:-2]) if nums[i:i+3] == [1, 2, 3]]
     return len(occurrences) > 0
 
 # Given 2 strings, a and b, return the number of the positions where they contain the 
@@ -80,10 +83,8 @@ def string_match(a, b):
 # Except an "x" at the very start or end should not be removed.
 # (NOTE): Look into regex solution.
 def string_x(str):
-    new_str = ''.join([char for char in str if char != 'x'])
-    str_with_start = 'x' + new_str if len(str) > 0 and str[0] == 'x' else new_str
-    str_with_end = str_with_start + 'x' if (len(str) > 1 and str[-1] == 'x') else str_with_start
-    return str_with_end
+    middle = ''.join([char for char in str[1:-1] if char != 'x'])
+    return f"{str[0]}{middle}{str[-1]}" if len(str) > 1 else str
 
 # Given a string, return a string made of the cars at indexes 0,1, 4,5
 # 8,9 ... so "kittens" yields "kien".
@@ -102,15 +103,16 @@ def string_yak(str):
 #
 # (NOTE): Find non-regex soution
 def array_667(nums):
-    str_nums = ''.join(str(x) for x in nums)
-    return len(re.findall(r'(?=(6[67]))', str_nums))
+    matches = [i for i, x in enumerate(nums[:-1]) if nums[i] == 6 and nums[i+1] in {6, 7}] 
+    return len(matches)
+
+    # str_nums = ''.join(str(x) for x in nums)
+    # return len(re.findall(r'(?=(6[67]))', str_nums))
 
 # Given an array of ints, we'll say that a triple is a value appearing 3 times in a
 # row in the array. Return true if the array does not contain any triples.
-#
-# (NOTE): Find non-regex soution
 def no_triples(nums):
-    matches = [v for i, v in enumerate(nums) if  i < (len(nums) - 2) and nums[i] == nums[i+1] == nums[i+2]]
+    matches = [v for i, v in enumerate(nums[:-2]) if nums[i] == nums[i+1] == nums[i+2]]
     return len(matches) == 0
 
     # Regex solution:
@@ -121,4 +123,5 @@ def no_triples(nums):
 # by the value plus 5, followed by the value minus 1. Additionally the 271 counts even if 
 # the "1" differs by 2 or less from the correct value.
 def has_271(nums):
-    return None
+    matches = [x for i, x in enumerate(nums[:-2]) if (nums[i+1] == nums[i] + 5) and (abs((nums[i] - 1) - nums[i+2]) <= 2) ]
+    return len(matches) > 0
