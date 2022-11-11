@@ -59,8 +59,7 @@ def array_count9(nums):
 # Given an array of ints, return true if one of the first 4 elements in the array 
 # is a 9. The array length may be less than 4.
 def array_front9(nums):
-    end = min(len(nums), 4)
-    front = nums[:end]
+    front = nums[:4]
     return 9 in front
 
 # Given an array of ints, return true if the sequence of numbers 1, 2, 3 appears 
@@ -100,12 +99,11 @@ def string_yak(str):
 
 # Given an array of ints, return the number of times that two 6's are next to each other
 # in the array. Also count instances where the second '6' is actually a 7.
-#
-# (NOTE): Find non-regex soution
 def array_667(nums):
     matches = [i for i, x in enumerate(nums[:-1]) if nums[i] == 6 and nums[i+1] in {6, 7}] 
     return len(matches)
 
+    # Regex solution:
     # str_nums = ''.join(str(x) for x in nums)
     # return len(re.findall(r'(?=(6[67]))', str_nums))
 

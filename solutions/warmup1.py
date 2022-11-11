@@ -29,33 +29,33 @@ def diff_21(n):
 def parrot_trouble(talking, hour):
     return talking and (hour < 7 or hour > 20)
 
-# Given 2 ints, a and b, return True if one if them is 10 or if their sum is 10.
+# Given 2 ints, a and b, return true if one if them is 10 or if their sum is 10.
 def makes_10(a, b):
     return a == 10 or b == 10 or a + b == 10
 
-# Given an int n, return True if it is within 10 of 100 or 200. Note: Math.abs(num) computes the 
+# Given an int n, return true if it is within 10 of 100 or 200. Note: Math.abs(num) computes the 
 # absolute value of a number.
 def near_hundred(n):
     return abs(n - 100) <= 10 or abs(n - 200) <= 10
 
-# Given 2 int values, return True if one is negative and one is positive. Except if the parameter "negative" 
+# Given 2 int values, return true if one is negative and one is positive. Except if the parameter "negative" 
 # is true, then return true only if both are negative.
 def pos_neg(a, b, negative):
     result = (a < 0 and b < 0) if negative else (a * b) < 0
     return result
 
 # Given a string, return a new string where "not " has been added to the front. However, if the string already 
-# begins with "not", return the string unchanged. Note: use .equals() to compare 2 strings.
+# begins with "not", return the string unchanged.
 def not_string(str):
-    result = "not " + str
-    if len(str) >= 3 and str[0:3] == "not" :
-        result = str
+    result = f"not {str}" if str[0:3] != "not" else str
     return result
 
 # Given a non-empty string and an int n, return a new string where the char at index n has been removed. The value 
 # of n will be a valid index of a char in the original string (i.e. n will be in the range 0..str.length()-1 inclusive).
 def missing_char(str, n):
-    return str[0:n] + str[n+1:]
+    front = str[0:n]
+    back = str[n+1:]
+    return f"{front}{back}"
 
 # Given a string, return a new string where the first and last chars have been exchanged.
 def front_back(str):
@@ -66,24 +66,22 @@ def front_back(str):
 # length is less than 3, the front is whatever is there. Return a new string which is 3 copies of 
 # the front.
 def front_3(str):
-    front = str[0:3] if len(str) >= 3 else str
-    return 3 * front
+    return 3 * str[0:3]
 
 # Given a string, take the last char and return a new string with the last char added at the front and back, so "cat" 
 # yields "tcatt". The original string will be length 1 or more.
 def back_around(str):
     back = str[-1]
-    return back + str + back
+    return f"{back}{str}{back}"
 
-# Return true if the given non-negative number is a multiple of 3 or a multiple of 5. Use the % "mod" operator
+# Return true if the given non-negative number is a multiple of 3 or a multiple of 5. Use the % "mod" operator.
 def or_35(n):
     return n % 3 == 0 or n % 5 == 0
 
 # Given a string, take the first 2 chars and return the string with the 2 chars added at both the front and back, 
 # so "kitten" yields"kikittenki". If the string length is less than 2, use whatever chars are there.
 def front_22(str):
-    front = str if len(str) < 2 else str[:2]
-    return front + str + front
+    return f"{str[:2]}{str}{str[0:2]}"
 
 # Given a string, return true if the string starts with "hi" and false otherwise.
 def start_hi(str):
@@ -118,15 +116,17 @@ def del_del(str):
     return str[0] + str[4:] if len(str) >= 4 and str[1:4] == 'del' else str
 
 # Return true if the given string begins with "mix", except the 'm' can be anything, so "pix", "9ix" .. all count.
+# 
+# (NOTE): Come up with a regex solution. 
 def mix_start(str):
     return len(str) >= 3 and str[1:3] == 'ix'
 
 # Given a string, return a string made of the first 2 chars (if present), however include first char only if it is 'o' 
 # and include the second only if it is 'z', so "ozymandias" yields "oz".
 def start_oz(str):
-    first_char_is_o = len(str) >= 1 and str[0] == 'o'
-    second_char_is_z = len(str) >= 2 and str[1] == 'z'
-    return ''.join(['o' if first_char_is_o else '', 'z' if second_char_is_z else ''])
+    first_char_is_o = str[:1] if str[:1] == 'o' else ''
+    second_char_is_z = str[1:2] if str[1:2] == 'z' else ''
+    return f"{first_char_is_o}{second_char_is_z}"
 
 # Given three int values, a b c, return the largest.
 def int_max(a, b, c):
@@ -151,7 +151,7 @@ def max_1020(a, b):
     nums_in_range = [x for x in [a, b] if x >= 10 and x <= 20]
     return 0 if len(nums_in_range) == 0 else max(nums_in_range)
 
-# Return True if the given string contains between 1 and 3 'e' chars.
+# Return true if the given string contains between 1 and 3 'e' chars.
 # 
 # (NOTE): Look into regex solution
 def string_e(str):
@@ -170,7 +170,7 @@ def last_digit(a, b):
 def end_up(str):
     front = str[:-3]
     end = str[-3:]
-    return front + end.upper()
+    return f"{front}{end.upper()}"
 
 # Given a non-empty string and an int N, return the string made starting with char 0, and then every Nth char of the string. So if N is 3, use 
 # char 0, 3, 6, ... and so on. N is 1 or more.
