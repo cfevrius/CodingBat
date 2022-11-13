@@ -103,6 +103,72 @@ class TestString1(unittest.TestCase):
         self.assertEqual(string1.non_start('a', 'x'), '')
         self.assertEqual(string1.non_start('kit', 'kat'), 'itat')
         self.assertEqual(string1.non_start('mart', 'dart'), 'artart')
+    
+    def test_left_2(self):
+        self.assertEqual(string1.left_2('Hello'), 'lloHe')
+        self.assertEqual(string1.left_2('java'), 'vaja')
+        self.assertEqual(string1.left_2('Hi'), 'Hi')
+        self.assertEqual(string1.left_2('code'), 'deco')
+        self.assertEqual(string1.left_2('cat'), 'tca')
+        self.assertEqual(string1.left_2('12345'), '34512')
+        self.assertEqual(string1.left_2('Chocolate'), 'ocolateCh')
+        self.assertEqual(string1.left_2('bricks'), 'icksbr')
+    
+    def test_right_2(self):
+        self.assertEqual(string1.right_2('Hello'), 'loHel')
+        self.assertEqual(string1.right_2('java'), 'vaja')
+        self.assertEqual(string1.right_2('Hi'), 'Hi')
+        self.assertEqual(string1.right_2('code'), 'deco')
+        self.assertEqual(string1.right_2('cat'), 'atc')
+        self.assertEqual(string1.right_2('12345'), '45123')
+    
+    def test_the_end(self):
+        self.assertEqual(string1.the_end('Hello', True), 'H')
+        self.assertEqual(string1.the_end('Hello', False), 'o')
+        self.assertEqual(string1.the_end('oh', True), 'o')
+        self.assertEqual(string1.the_end('oh', False), 'h')
+        self.assertEqual(string1.the_end('x', True), 'x')
+        self.assertEqual(string1.the_end('x', False), 'x')
+        self.assertEqual(string1.the_end('java', True), 'j')
+        self.assertEqual(string1.the_end('chocolate', False), 'e')
+        self.assertEqual(string1.the_end('1234', True), '1')
+        self.assertEqual(string1.the_end('code', False), 'e')
+    
+    def test_without_end_2(self):
+        self.assertEqual(string1.without_end_2('Hello'), 'ell')
+        self.assertEqual(string1.without_end_2('abc'), 'b')
+        self.assertEqual(string1.without_end_2('ab'), '')
+        self.assertEqual(string1.without_end_2('a'), '')
+        self.assertEqual(string1.without_end_2(''), '')
+        self.assertEqual(string1.without_end_2('coldy'), 'old')
+        self.assertEqual(string1.without_end_2('java code'), 'ava cod')
+    
+    def test_middle_two(self):
+        self.assertEqual(string1.middle_two('string'), 'ri')
+        self.assertEqual(string1.middle_two('code'), 'od')
+        self.assertEqual(string1.middle_two('Practice'), 'ct')
+        self.assertEqual(string1.middle_two('ab'), 'ab')
+        self.assertEqual(string1.middle_two('0123456789'), '45')
+    
+    def test_ends_ly(self):
+        self.assertEqual(string1.ends_ly('oddly'), True)
+        self.assertEqual(string1.ends_ly('y'), False)
+        self.assertEqual(string1.ends_ly('oddy'), False)
+        self.assertEqual(string1.ends_ly('oddl'), False)
+        self.assertEqual(string1.ends_ly('olydd'), False)
+        self.assertEqual(string1.ends_ly('ly'), True)
+        self.assertEqual(string1.ends_ly(''), False)
+        self.assertEqual(string1.ends_ly('falsey'), False)
+        self.assertEqual(string1.ends_ly('evenly'), True)
+    
+    def test_n_twice(self):
+        self.assertEqual(string1.n_twice('Hello', 2), 'Helo')
+        self.assertEqual(string1.n_twice('Chocolate', 3), 'Choate')
+        self.assertEqual(string1.n_twice('Chocolate', 1), 'Ce')
+        self.assertEqual(string1.n_twice('Chocolate', 0), '')
+        self.assertEqual(string1.n_twice('Hello', 4), 'Hellello')
+        self.assertEqual(string1.n_twice('Code', 4), 'CodeCode')
+        self.assertEqual(string1.n_twice('Code', 2), 'Code')
 
 if __name__ == '__main__':
     unittest.main()
