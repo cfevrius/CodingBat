@@ -115,56 +115,59 @@ def at_first(str):
 # Given 2 strings, a and b, return a new string made of the first char of a and the last char of b, so "yo" and "java" yields "ya". If either 
 # string is length 0, use '@' for its missing char.
 def last_chars(a, b):
-    return None
+    return f"{a[0] if len(a) > 0 else '@'}{b[-1] if len(b) > 0 else '@'}"
 
 # Given two strings, append them together (known as "concatenation") and return the result. However, if the concatenation creates a double-char, then 
 # omit one of the chars, so "abc" and "cat" yields "abcat".
 def con_cat(a, b):
-    return None
+    return f"{a}{b if b[0:1] != a[-1:] else b[1:]}"
 
 # Given a string of any length, return a new string where the last 2 chars, if present, are swapped, so "coding" yields "codign".
 def last_two(str):
-    return None
+    return f"{str[:-2]}{str[-1:]}{str[-2:-1]}"
 
 # Given a string, if the string begins with "red" or "blue" return that color string, otherwise return the empty string.
 def see_color(str):
-    return None
+    return 'red' if str.startswith('red') else 'blue' if str.startswith('blue') else ''
 
 # Given a string, return true if the first 2 chars in the string also appear at the end of the string, such as with "edited".
 def front_again(str):
-    return None
+    return str[:2] == str[-2:] if len(str) >= 2 else False
 
 # Given two strings, append them together (known as "concatenation") and return the result. However, if the strings are different lengths, 
 # omit chars from the longer string so it is the same length as the shorter string. So "Hello" and "Hi" yield "loHi". The strings may be any length.
 def min_cat(a, b):
-    return None
+    shorter, longer = sorted([a, b], key=len)
+    index = len(shorter)
+    adjust_str = lambda x : x if x == shorter else x[-index:] if index > 0 else ''
+    return f"{adjust_str(a)}{adjust_str(b)}"
 
 # Given a string, return a new string made of 3 copies of the first 2 chars of the original string. The string may be any length. If there are fewer than 
 # 2 chars, use whatever is there.
 def extra_front(str):
-    return None
+    return 3 * str[:2]
 
 # Given a string, if a length 2 substring appears at both its beginning and end, return a string without the substring at the beginning, so "HelloHe" yields 
 # "lloHe". The substring may overlap with itself, so "Hi" yields "". Otherwise, return the original string unchanged.
 def without2(str):
-    return None
+    return str[2:] if str[:2] == str[-2:] and len(str) >= 2 else str
 
 # Given a string, return a version without the first 2 chars. Except keep the first char if it is 'a' and keep the second char if it is 'b'. The string may be any 
 # length. Harder than it looks.
 def de_front(str):
-    return None
+    return ''.join([x for i, x in enumerate(str) if (i != 0 or x == 'a')  and (i != 1 or x == 'b')])
 
 # Given a string and a second "word" string, we'll say that the word matches the string if it appears at the front of the string, except its first char does not need 
 # to match exactly. On a match, return the front of the string, or otherwise return the empty string. So, so with the string "hippo" the word "hi" returns "hi" and "xip" 
 # returns "hip". The word will be at least length 1.
 def start_word(str, word):
-    return None
+    return str[:len(word)] if str[1:len(word)] == word[1:] else ''
 
 # Given a string, if the first or last chars are 'x', return the string without those 'x' chars, and otherwise return the string unchanged.
 def without_x(str):
-    return None
+    return ''.join([x for i, x in enumerate(str) if (i != 0 or x != 'x') and (i != (len(str) - 1) or x != 'x') ])
 
 # Given a string, if one or both of the first 2 chars is 'x', return the string without those 'x' chars, and otherwise return the string unchanged. 
 # This is a little harder than it looks.
 def without_x_2(str):
-    return None
+    return ''.join([x for i, x in enumerate(str) if (i != 0 or x != 'x') and (i != 1 or x != 'x')])

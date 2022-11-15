@@ -240,7 +240,7 @@ class TestString1(unittest.TestCase):
         self.assertEqual(string1.last_two('coding'), 'codign')
         self.assertEqual(string1.last_two('cat'), 'cta')
         self.assertEqual(string1.last_two('ab'), 'ba')
-        self.assertEqual(string1.last_two('a'), '')
+        self.assertEqual(string1.last_two('a'), 'a')
         self.assertEqual(string1.last_two(''), '')
 
     def test_see_color(self):
@@ -248,7 +248,7 @@ class TestString1(unittest.TestCase):
         self.assertEqual(string1.see_color('"xxred'), '')
         self.assertEqual(string1.see_color('blueTimes'), 'blue')
         self.assertEqual(string1.see_color('NoColor'), '')
-        self.assertEqual(string1.see_color('red'), 'blue')
+        self.assertEqual(string1.see_color('red'), 'red')
         self.assertEqual(string1.see_color('re'), '')
         self.assertEqual(string1.see_color('blu'), '')
         self.assertEqual(string1.see_color('blue'), 'blue')
