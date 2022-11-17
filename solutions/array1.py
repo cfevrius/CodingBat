@@ -53,11 +53,11 @@ def make_ends(nums):
     return [nums[0], nums[-1]]
 
 # Given an int array length 2, return true if it contains a 2 or a 3.
-def has_23(nums):
+def has_2_3(nums):
     return (2 in nums) or (3 in nums)
 
 # Given an int array length 2, return true if it does not contain a 2 or 3.
-def no_23(nums):
+def no_2_3(nums):
     return not ((2 in nums) or (3 in nums))
 
 # Given an int array, return a new array with double the length where its last 
@@ -69,5 +69,5 @@ def make_last(nums):
 
 # Given an int array, return true if the array contains 2 twice, or 3 twice. The array 
 # will be length 0, 1, or 2.
-def double_23(nums):
+def double_2_3(nums):
     return nums.count(2) == 2 or nums.count(3) == 2
