@@ -71,3 +71,11 @@ def make_last(nums):
 # will be length 0, 1, or 2.
 def double_2_3(nums):
     return nums.count(2) == 2 or nums.count(3) == 2
+
+# Given an int array length 3, if there is a 2 in the array immediately followed by a 3, set 
+# the 3 element to 0. Return the changed array.
+def fix_2_3(nums):
+    matches = [i + 1 for i, _ in enumerate(nums[:-1]) if nums[i] == 2 and nums[i + 1] == 3]
+    for match in matches:
+        nums[match] = 0
+    return nums

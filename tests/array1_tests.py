@@ -150,13 +150,13 @@ class TestArray1(unittest.TestCase):
         self.assertEqual(array1.double_2_3([]), False)
         self.assertEqual(array1.double_2_3([3, 4]), False)
     
-    def test_fix_23(self):
-        self.assertEqual(array1.fix_23([]), [])
-        self.assertEqual(array1.fix_23([]), [])
-        self.assertEqual(array1.fix_23([]), [])
-        self.assertEqual(array1.fix_23([]), [])
-        self.assertEqual(array1.fix_23([]), [])
-        self.assertEqual(array1.fix_23([]), [])
+    def test_fix_2_3(self):
+        self.assertEqual(array1.fix_2_3([1, 2, 3]), [1, 2, 0])
+        self.assertEqual(array1.fix_2_3([2, 3, 5]), [2, 0, 5])
+        self.assertEqual(array1.fix_2_3([1, 2, 1]), [1, 2, 1])
+        self.assertEqual(array1.fix_2_3([3, 2, 1]), [3, 2, 1])
+        self.assertEqual(array1.fix_2_3([2, 2, 3]), [2, 2, 0])
+        self.assertEqual(array1.fix_2_3([2, 3, 3]), [2, 0, 3])
     
     def test_start_1(self):
         self.assertEqual(array1.start_1([]), [])
