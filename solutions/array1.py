@@ -79,3 +79,24 @@ def fix_2_3(nums):
     for match in matches:
         nums[match] = 0
     return nums
+
+# Start with 2 int arrays, a and b, of any length. Return how many of the arrays have 1 as 
+# their first element.
+def start_1(a, b):
+    matches = [x for x in [a, b] if x and x[0] == 1]
+    return len(matches)
+
+# Start with 2 int arrays, a and b, each length 2. Consider the sum of the values in each array. 
+# Return the array which has the largest sum. In event of a tie, return a.
+def bigger_two(a, b):
+    return sorted([b, a], key=sum)[1]
+
+# Given an array of ints of even length, return a new array length 2 containing the middle two elements 
+# from the original array. The original array will be length 2 or more.
+def make_middle(nums):
+    start = (len(nums) // 2) - 1
+    return nums[start:start+2]
+
+# Given 2 int arrays, each length 2, return a new array length 4 containing all their elements.
+def plus_two(a, b):
+    return a + b
