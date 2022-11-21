@@ -105,3 +105,36 @@ def plus_two(a, b):
 # The array length will be at least 1.
 def swap_ends(nums):
     return nums[-1:] + nums[1:-1] + nums[0:1] if len(nums) > 1 else nums
+
+# Given an array of ints of odd length, return a new array length 3 containing the elements from the 
+# middle of the array. The array length will be at least 3.
+def mid_three(nums):
+    start = len(nums) // 2 - 1
+    return nums[start:start+3]
+
+# Given an array of ints of odd length, look at the first, last, and middle values in the array and return 
+# the largest. The array length will be a least 1.
+def max_triple(nums):
+    return sorted([nums[0], nums[len(nums) // 2], nums[-1] ])[-1]
+
+# Given an int array of any length, return a new array of its first 2 elements. If the array is smaller than length 2, 
+# use whatever elements are present.
+def front_piece(nums):
+    return nums[:2]
+
+# We'll say that a 1 immediately followed by a 3 in an array is an "unlucky" 1. Return true if the given array contains an 
+# unlucky 1 in the first 2 or last 2 positions in the array.
+def unlucky_1(nums):
+    length = len(nums)
+    matches = [i for i, x in enumerate(nums[:-1]) if x == 1 and nums[i+1] == 3 and i in {0, 1, length-1, length-2}]
+    return len(matches) > 0
+
+# Given 2 int arrays, a and b, return a new array length 2 containing, as much as will fit, the elements from a followed by the elements 
+# from b. The arrays may be any length, including 0, but there will be 2 or more elements available between the 2 arrays.
+def make_2(a, b):
+    return (a + b)[:2]
+
+# Given 2 int arrays, a and b, of any length, return a new array with the first element of each array. If either array is length 0, ignore that 
+# array.
+def front_1_1(a, b):
+    return a[:1] + b[:1]
