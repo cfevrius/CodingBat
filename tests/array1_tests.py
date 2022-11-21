@@ -192,12 +192,12 @@ class TestArray1(unittest.TestCase):
         self.assertEqual(array1.plus_two([9, 2], [3, 4]), [9, 2, 3, 4])
     
     def test_swap_ends(self):
-        self.assertEqual(array1.swap_ends([]), [])
-        self.assertEqual(array1.swap_ends([]), [])
-        self.assertEqual(array1.swap_ends([]), [])
-        self.assertEqual(array1.swap_ends([]), [])
-        self.assertEqual(array1.swap_ends([]), [])
-        self.assertEqual(array1.swap_ends([]), [])
+        self.assertEqual(array1.swap_ends([1, 2, 3, 4]), [4, 2, 3, 1])
+        self.assertEqual(array1.swap_ends([1, 2, 3]), [3, 2, 1])
+        self.assertEqual(array1.swap_ends([8, 6, 7, 9, 5]), [5, 6, 7, 9, 8])
+        self.assertEqual(array1.swap_ends([3, 1, 4, 1, 5, 9]), [9, 1, 4, 1, 5, 3])
+        self.assertEqual(array1.swap_ends([1, 2]), [2, 1])
+        self.assertEqual(array1.swap_ends([1]), [1])
     
     def test_mid_three(self):
         self.assertEqual(array1.mid_three([]), [])

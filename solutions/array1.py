@@ -100,3 +100,8 @@ def make_middle(nums):
 # Given 2 int arrays, each length 2, return a new array length 4 containing all their elements.
 def plus_two(a, b):
     return a + b
+
+# Given an array of ints, swap the first and last elements in the array. Return the modified array. 
+# The array length will be at least 1.
+def swap_ends(nums):
+    return nums[-1:] + nums[1:-1] + nums[0:1] if len(nums) > 1 else nums
