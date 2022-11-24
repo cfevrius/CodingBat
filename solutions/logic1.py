@@ -38,3 +38,19 @@ def caught_speeding(speed, is_birthday):
 # Given 2 ints, a and b, return their sum. However, sums in the range 10..19 inclusive, are forbidden, so in that case just return 20.
 def sorta_sum(a, b):
     return 20 if a+b in range(10, 20) else a+b
+
+# Given a day of the week encoded as 0=Sun, 1=Mon, 2=Tue, ...6=Sat, and a boolean indicating if we are on vacation, return a string of the form 
+# "7:00" indicating when the alarm clock should ring. Weekdays, the alarm should be "7:00" and on the weekend it should be "10:00". Unless we are 
+# on vacation -- then on weekdays it should be "10:00" and weekends it should be "off".
+def alarm_clock(day, vacation):
+    result = ''
+    if day in {1, 2, 3, 4, 5}:
+       result = '10:00' if vacation else '7:00' 
+    elif day in {0, 6}:
+        result = 'off' if vacation else '10:00' 
+    return result
+
+# The number 6 is a truly great number. Given two int values, a and b, return true if either one is 6. Or if their sum or difference is 6. Note: 
+# the function abs(num) computes the absolute value of a number.
+def love_6(a, b):
+    return 6 in {a, b, a+b, abs(a-b)} 
