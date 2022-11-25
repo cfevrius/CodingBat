@@ -31,9 +31,9 @@ def parrot_trouble(talking, hour):
 
 # Given 2 ints, a and b, return true if one if them is 10 or if their sum is 10.
 def makes_10(a, b):
-    return a == 10 or b == 10 or a + b == 10
+    return 10 in {a, b, a + b}
 
-# Given an int n, return true if it is within 10 of 100 or 200. Note: Math.abs(num) computes the 
+# Given an int n, return true if it is within 10 of 100 or 200. Note: abs(num) computes the 
 # absolute value of a number.
 def near_hundred(n):
     return abs(n - 100) <= 10 or abs(n - 200) <= 10
@@ -47,20 +47,17 @@ def pos_neg(a, b, negative):
 # Given a string, return a new string where "not " has been added to the front. However, if the string already 
 # begins with "not", return the string unchanged.
 def not_string(str):
-    result = f"not {str}" if str[0:3] != "not" else str
+    result = f'not {str}' if str[0:3] != "not" else str
     return result
 
 # Given a non-empty string and an int n, return a new string where the char at index n has been removed. The value 
 # of n will be a valid index of a char in the original string (i.e. n will be in the range 0..str.length()-1 inclusive).
 def missing_char(str, n):
-    front = str[0:n]
-    back = str[n+1:]
-    return f"{front}{back}"
+    return f"{str[:n]}{str[n+1:]}"
 
 # Given a string, return a new string where the first and last chars have been exchanged.
 def front_back(str):
-    result = (str[-1] + str[1:-1] + str[0]) if len(str) > 1 else str
-    return result
+    return f'{str[-1]}{str[1:-1]}{str[0]}' if len(str) > 1 else str
 
 # Given a string, we'll say that the front is the first 3 chars of the string. If the string 
 # length is less than 3, the front is whatever is there. Return a new string which is 3 copies of 
@@ -81,7 +78,7 @@ def or_35(n):
 # Given a string, take the first 2 chars and return the string with the 2 chars added at both the front and back, 
 # so "kitten" yields"kikittenki". If the string length is less than 2, use whatever chars are there.
 def front_22(str):
-    return f"{str[:2]}{str}{str[0:2]}"
+    return f'{str[:2]}{str}{str[0:2]}'
 
 # Given a string, return true if the string starts with "hi" and false otherwise.
 def start_hi(str):
@@ -94,26 +91,26 @@ def icy_hot(temp1, temp2):
 
 # Given 2 int values, return true if either of them is in the range 10..20 inclusive.
 def in_1020(a, b):
-    in_range = lambda x : x >= 10 and x <= 20
+    in_range = lambda x : 10 <= x <= 20
     return in_range(a) or in_range(b)
 
 # We'll say that a number is "teen" if it is in the range 13..19 inclusive. Given 3 int values, return 
 # true if 1 or more of them are teen.
 def has_teen(a, b, c):
-    is_teen = lambda x : x >= 13 and x <= 19
+    is_teen = lambda x : 13 <= x <= 19
     return is_teen(a) or is_teen(b) or is_teen(c)
 
 # We'll say that a number is "teen" if it is in the range 13..19 inclusive. Given 2 int values, return true 
 # if one or the other is teen, but not both.
 def lone_teen(a, b):
-    is_teen = lambda x : x >= 13 and x <= 19
+    is_teen = lambda x : 13 <= x <= 19
     teens = [x for x in [a, b] if is_teen(x)]
     return len(teens) == 1
 
 # Given a string, if the string "del" appears starting at index 1, return a string where that "del" has been deleted. 
 # Otherwise, return the string unchanged.
 def del_del(str):
-    return str[0] + str[4:] if len(str) >= 4 and str[1:4] == 'del' else str
+    return f'{str[0]}{str[4:]}' if len(str) >= 4 and str[1:4] == 'del' else str
 
 # Return true if the given string begins with "mix", except the 'm' can be anything, so "pix", "9ix" .. all count.
 # 
@@ -142,13 +139,13 @@ def close_10(a, b):
 # Given 2 int values, return true if they are both in the range 30..40 inclusive, or they are both in the range 40..50 
 # inclusive.
 def in_3040(a, b):
-    in_30_40 = lambda x : x >= 30 and x <= 40
-    in_40_50 = lambda x : x >= 40 and x <= 50
+    in_30_40 = lambda x : 30 <= x <= 40
+    in_40_50 = lambda x : 40 <= x <= 50
     return (in_30_40(a) and in_30_40(b)) or (in_40_50(a) and in_40_50(b))
 
 # Given 2 positive int values, return the larger value that is in the range 10..20 inclusive, or return 0 if neither is in that range.
 def max_1020(a, b):
-    nums_in_range = [x for x in [a, b] if x >= 10 and x <= 20]
+    nums_in_range = [x for x in [a, b] if 10 <= x <= 20]
     return 0 if len(nums_in_range) == 0 else max(nums_in_range)
 
 # Return true if the given string contains between 1 and 3 'e' chars.
@@ -156,7 +153,7 @@ def max_1020(a, b):
 # (NOTE): Look into regex solution
 def string_e(str):
     num_es = str.count('e')
-    return num_es >= 1 and num_es <= 3
+    return 1 <= num_es <= 3
 
 # Given two non-negative int values, return true if they have the same last digit, such as with 27 and 57. Note that the % "mod" operator 
 # computes remainders, so 17 % 10 is 7.

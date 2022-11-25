@@ -3,13 +3,13 @@ import re
 # Given a string name, e.g. "Bob", return a 
 # greeting of the form "Hello Bob!".
 def hello_name(name):
-    return f"Hello {name}!"
+    return f'Hello {name}!'
 
 # Given two strings, a and b, return the result 
 # of putting them together in the order abba, e.g. 
 # "Hi" and "Bye" returns "HiByeByeHi".
 def make_abba(a, b):
-    return f"{a}{b}{b}{a}"
+    return f'{a}{b}{b}{a}'
 
 # The web is built with HTML strings like "<i>Yay</i>" 
 # which draws Yay as italic text. In this example, the 
@@ -17,14 +17,14 @@ def make_abba(a, b):
 # Given tag and word strings, create the HTML string with tags 
 # around the word, e.g. "<i>Yay</i>".
 def make_tags(tag, word):
-    return f"<{tag}>{word}</{tag}>"
+    return f'<{tag}>{word}</{tag}>'
 
 # Given an "out" string length 4, such as "<<>>", and a word, return 
 # a new string where the word is in the middle of the out string, e.g. "<<word>>". 
 # Note: use str[i:j] to extract the string starting at index i and going 
 # up to but not including index j.
 def make_out_word(out, word):
-    return f"{out[:2]}{word}{out[-2:]}"
+    return f'{out[:2]}{word}{out[-2:]}'
 
 # Given a string, return a new string made of 3 copies of the last 2 chars of the 
 # original string. The string length will be at least 2.
@@ -52,22 +52,22 @@ def without_end(str):
 # may be empty (length 0).
 def combo_string(a, b):
     short, long = sorted([a, b], key=len)
-    return f"{short}{long}{short}"
+    return f'{short}{long}{short}'
 
 # Given 2 strings, return their concatenation, except omit the first char of each. The strings will 
 # be at least length 1.
 def non_start(a, b):
-    return f"{a[1:]}{b[1:]}"
+    return f'{a[1:]}{b[1:]}'
 
 # Given a string, return a "rotated left 2" version where the first 2 chars are moved to the end. The string 
 # length will be at least 2.
 def left_2(str):
-    return f"{str[2:]}{str[:2]}"
+    return f'{str[2:]}{str[:2]}'
 
 # Given a string, return a "rotated right 2" version where the last 2 chars are moved to the start. The string 
 # length will be at least 2.
 def right_2(str):
-    return f"{str[-2:]}{str[:-2]}"
+    return f'{str[-2:]}{str[:-2]}'
 
 # Given a string, return a string length 1 from its front, unless front is false, in which case return a string length 1 
 # from its back. The string will be non-empty.
@@ -90,7 +90,7 @@ def ends_ly(str):
 
 # Given a string and an int n, return a string made of the first and last n chars from the string. The string length will be at least n.
 def n_twice(str, n):
-    return "" if n == 0 else f"{str[:n]}{str[-n:]}"
+    return '' if n == 0 else f'{str[:n]}{str[-n:]}'
 
 # Given a string and an index, return a string length 2 starting at the given index. If the index is too big or too small to define a string 
 # length 2, use the first 2 chars. The string length will be at least 2.
@@ -120,11 +120,11 @@ def last_chars(a, b):
 # Given two strings, append them together (known as "concatenation") and return the result. However, if the concatenation creates a double-char, then 
 # omit one of the chars, so "abc" and "cat" yields "abcat".
 def con_cat(a, b):
-    return f"{a}{b if b[0:1] != a[-1:] else b[1:]}"
+    return f'{a}{b if b[0:1] != a[-1:] else b[1:]}'
 
 # Given a string of any length, return a new string where the last 2 chars, if present, are swapped, so "coding" yields "codign".
 def last_two(str):
-    return f"{str[:-2]}{str[-1:]}{str[-2:-1]}"
+    return f'{str[:-2]}{str[-1:]}{str[-2:-1]}'
 
 # Given a string, if the string begins with "red" or "blue" return that color string, otherwise return the empty string.
 def see_color(str):
@@ -140,7 +140,7 @@ def min_cat(a, b):
     shorter, longer = sorted([a, b], key=len)
     index = len(shorter)
     adjust_str = lambda x : x if x == shorter else x[-index:] if index > 0 else ''
-    return f"{adjust_str(a)}{adjust_str(b)}"
+    return f'{adjust_str(a)}{adjust_str(b)}'
 
 # Given a string, return a new string made of 3 copies of the first 2 chars of the original string. The string may be any length. If there are fewer than 
 # 2 chars, use whatever is there.

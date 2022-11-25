@@ -22,16 +22,16 @@ def date_fashion(you, date):
 # 60 and 90 (inclusive). Unless it is summer, then the upper limit is 100 instead of 90. Given an int temperature and 
 # a boolean isSummer, return true if the squirrels play and false otherwise.
 def squirrel_play(temp, is_summer):
-    return temp >= 60 and temp <= (100 if is_summer else 90)
+    return 60 <= temp <= (100 if is_summer else 90)
 
 # You are driving a little too fast, and a police officer stops you. Write code to compute the result, encoded as an int 
 # value: 0=no ticket, 1=small ticket, 2=big ticket. If speed is 60 or less, the result is 0. If speed is between 61 and 80 inclusive, 
 # the result is 1. If speed is 81 or more, the result is 2. Unless it is your birthday -- on that day, your speed can be 5 higher in all cases.
 def caught_speeding(speed, is_birthday):
     result = 0
-    if speed >= (86 if is_birthday else 81):
+    if speed > (85 if is_birthday else 80):
         result = 2
-    if speed in range(66 if is_birthday else 61, (86 if is_birthday else 81)):
+    if  (66 if is_birthday else 61) <= speed <= (85 if is_birthday else 80):
         result = 1 
     return result
 
@@ -44,9 +44,9 @@ def sorta_sum(a, b):
 # on vacation -- then on weekdays it should be "10:00" and weekends it should be "off".
 def alarm_clock(day, vacation):
     result = ''
-    if day in {1, 2, 3, 4, 5}:
+    if 1 <= day <= 5:
        result = '10:00' if vacation else '7:00' 
-    elif day in {0, 6}:
+    else:
         result = 'off' if vacation else '10:00' 
     return result
 
@@ -54,3 +54,8 @@ def alarm_clock(day, vacation):
 # the function abs(num) computes the absolute value of a number.
 def love_6(a, b):
     return 6 in {a, b, a+b, abs(a-b)} 
+
+# Given a number n, return true if n is in the range 1..10, inclusive. Unless outsideMode is true, in which case return true if the number is less 
+# or equal to 1, or greater or equal to 10.
+def in_1_to_10(n, outside_mode):
+    return not (1 < n < 10) if outside_mode else 1 <= n <= 10 

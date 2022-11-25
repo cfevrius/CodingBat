@@ -105,5 +105,22 @@ class Logic1Test(unittest.TestCase):
         self.assertEqual(logic1.love_6(3, 3), True) 
         self.assertEqual(logic1.love_6(3, 4), False) 
 
+    def test_in_1_to_10(self):
+        self.assertEqual(logic1.in_1_to_10(5, False), True)
+        self.assertEqual(logic1.in_1_to_10(11, False), False)
+        self.assertEqual(logic1.in_1_to_10(11, True), True)
+        self.assertEqual(logic1.in_1_to_10(10, False), True)
+        self.assertEqual(logic1.in_1_to_10(10, True), True)
+        self.assertEqual(logic1.in_1_to_10(9, False), True)
+        self.assertEqual(logic1.in_1_to_10(9, True), False)
+        self.assertEqual(logic1.in_1_to_10(1, False), True)
+        self.assertEqual(logic1.in_1_to_10(1, True), True)
+        self.assertEqual(logic1.in_1_to_10(0, False), False)
+        self.assertEqual(logic1.in_1_to_10(0, True), True)
+        self.assertEqual(logic1.in_1_to_10(-1, False), False)
+        self.assertEqual(logic1.in_1_to_10(-1, True), True)
+        self.assertEqual(logic1.in_1_to_10(99, False), False)
+        self.assertEqual(logic1.in_1_to_10(-99, True), True)
+
 if __name__ == '__main__':
     unittest.main()
