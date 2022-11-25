@@ -121,6 +121,28 @@ class Logic1Test(unittest.TestCase):
         self.assertEqual(logic1.in_1_to_10(-1, True), True)
         self.assertEqual(logic1.in_1_to_10(99, False), False)
         self.assertEqual(logic1.in_1_to_10(-99, True), True)
+    
+    def test_special_eleven(self):
+        self.assertEqual(logic1.special_eleven(22), True)
+        self.assertEqual(logic1.special_eleven(23), True)
+        self.assertEqual(logic1.special_eleven(24), False)
+        self.assertEqual(logic1.special_eleven(21), False)
+        self.assertEqual(logic1.special_eleven(11), True)
+        self.assertEqual(logic1.special_eleven(12), True)
+        self.assertEqual(logic1.special_eleven(10), False)
+        self.assertEqual(logic1.special_eleven(9), False)
+        self.assertEqual(logic1.special_eleven(8), False)
+        self.assertEqual(logic1.special_eleven(0), True)
+        self.assertEqual(logic1.special_eleven(1), True)
+        self.assertEqual(logic1.special_eleven(2), False)
+        self.assertEqual(logic1.special_eleven(121), True)
+        self.assertEqual(logic1.special_eleven(122), True)
+        self.assertEqual(logic1.special_eleven(123), False)
+        self.assertEqual(logic1.special_eleven(46), False)
+        self.assertEqual(logic1.special_eleven(49), False)
+        self.assertEqual(logic1.special_eleven(52), False)
+        self.assertEqual(logic1.special_eleven(54), False)
+        self.assertEqual(logic1.special_eleven(55), True)
 
 if __name__ == '__main__':
     unittest.main()
