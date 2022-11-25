@@ -72,7 +72,7 @@ def in_1_to_10(n, outside_mode):
 # multiple of 11. Return true if the given non-negative number is special. Use the % "mod" 
 # operator
 def special_eleven(n):
-    n % 11 == 0 or (n - 1) % 11 == 0
+    return n % 11 == 0 or (n - 1) % 11 == 0
 
 # Return true if the given non-negative number is 1 or 2 more than a multiple of 20.
 def more_20(n):
