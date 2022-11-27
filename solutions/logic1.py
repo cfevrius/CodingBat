@@ -120,33 +120,48 @@ def tea_party(tea, candy):
 # return "Buzz". If both the "f" and "b" conditions are true, return "FizzBuzz". In all other 
 # cases, return the string unchanged.
 def fizz_string(str):
-    return None
+    result = str
+    if str.startswith('f') and str.endswith('b'):
+        result =  'FizzBuzz'
+    elif str.startswith('f'):
+        result =  'Fizz'
+    elif str.endswith('b'):
+        result =  'Buzz'
+    return result
 
 # Given an int n, return the string form of the number followed by "!". So the int 6 yields "6!". 
 # Except if the number is divisible by 3 use "Fizz" instead of the number, and if the number is 
 # divisible by 5 use "Buzz", and if divisible by both 3 and 5, use "FizzBuzz". 
 def fizz_string_2(n):
-    return None
+    result = f'{n}!'
+    if n % 3 == 0 and n % 5 == 0:
+        result = 'FizzBuzz!'
+    elif n % 3 == 0:
+        result = 'Fizz!'
+    elif n % 5 == 0:
+        result = 'Buzz!'
+    return result
 
 # Given three ints, a b c, return true if it is possible to add two of the ints to get the third.
 def two_as_one(a, b, c):
-    return None
+    return any([a + b == c, a + c == b, b + c == a])
 
 # Given three ints, a b c, return true if b is greater than a, and c is greater than b. However, 
 # with the exception that if "bOk" is true, b does not need to be greater than a.
 def in_order(a, b, c, b_ok):
-    return None 
+    return  b < c if b_ok else a < b < c
 
 # Given three ints, a b c, return true if they are in strict increasing order, such as 2 5 11, or 
 # 5 6 7, but not 6 5 7 or 5 5 7. However, with the exception that if "equalOk" is true, equality 
 # is allowed, such as 5 5 7 or 5 5 5.
 def in_order_equal(a, b, c, equal_ok):
-    return None
+    return  a <= b <= c if equal_ok else a < b < c 
 
 # Given three ints, a b c, return true if two or more of them have the same rightmost digit. The ints 
 # are non-negative. Note: the % "mod" operator computes the remainder, e.g. 17 % 10 is 7.
 def last_digit(a, b, c):
-    return None
+    right_digits = map(lambda x : x % 10, [a, b, c])
+    return len(set(right_digits)) < 3
 
 # Given three ints, a b c, return true if one of them is 10 or more less than one of the others.
 def less_by_10(a, b, c):
