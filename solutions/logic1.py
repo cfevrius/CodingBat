@@ -72,43 +72,49 @@ def in_1_to_10(n, outside_mode):
 # multiple of 11. Return true if the given non-negative number is special. Use the % "mod" 
 # operator
 def special_eleven(n):
-    return n % 11 == 0 or (n - 1) % 11 == 0
+    return n % 11 in {0, 1}
 
 # Return true if the given non-negative number is 1 or 2 more than a multiple of 20.
 def more_20(n):
-    return None
+    return n % 20 in {1, 2} 
 
 # Return true if the given non-negative number is a multiple of 3 or 5, but not both.
 def old_35(n):
-    return None
+    return (n % 5 == 0) != (n % 3 == 0)
 
 # Return true if the given non-negative number is 1 or 2 less than a multiple of 20. So 
 # for example 38 and 39 return true, but 40 returns false.
 def less_20(n):
-    return None
+    return 0 in {(n + 1) % 20, (n + 2) % 20}
 
 # Given a non-negative number "num", return true if num is within 2 of a multiple of 10. 
 # Note: (a % b) is the remainder of dividing a by b, so (7 % 5) is 2.
 def near_ten(num):
-    return None
+    return num % 10 in {0, 1, 2, 8, 9} 
 
 # Given 2 ints, a and b, return their sum. However, "teen" values in the range 13..19 
 # inclusive, are extra lucky. So if either value is a teen, just return 19.
 def teen_sum(a, b):
-    return None
+    is_teen = lambda x : 13 <= x <= 19
+    return a + b if not any(map(is_teen, [a, b])) else 19
 
 # Your cell phone rings. Return true if you should answer it. Normally you answer, except 
 # in the morning you only answer if it is your mom calling. In all cases, if you are asleep, 
 # you do not answer.
 def answer_cell(is_morning, is_mom, is_asleep):
-    return None
+    return (not is_morning or is_mom) and not is_asleep
 
 # We are having a party with amounts of tea and candy. Return the int outcome of the party encoded 
 # as 0=bad, 1=good, or 2=great. A party is good (1) if both tea and candy are at least 5. 
 # However, if either tea or candy is at least double the amount of the other one, the party is great 
 # (2). However, in all cases, if either tea or candy is less than 5, the party is always bad (0).
 def tea_party(tea, candy):
-    return None
+    result = 1 
+    if tea < 5 or candy < 5:
+        result = 0
+    elif tea >= (2 * candy) or candy >= (2 * tea):
+        result = 2
+    return result
 
 # Given a string str, if the string starts with "f" return "Fizz". If the string ends with "b" 
 # return "Buzz". If both the "f" and "b" conditions are true, return "FizzBuzz". In all other 
