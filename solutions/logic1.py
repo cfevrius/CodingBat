@@ -165,13 +165,15 @@ def last_digit(a, b, c):
 
 # Given three ints, a b c, return true if one of them is 10 or more less than one of the others.
 def less_by_10(a, b, c):
-    return None
+    is_less_by_10 = lambda x, y : (y - 10 >= x) or (x - 10 >= y)
+    return any([is_less_by_10(a, b), is_less_by_10(a, c), is_less_by_10(b, c)])
 
 # Return the sum of two 6-sided dice rolls, each in the range 1..6. However, if noDoubles is true, 
 # if the two dice show the same value, increment one die to the next value, wrapping around to 1 
 # if its value was 6.
 def without_doubles(die_1, die_2, no_doubles):
-    return None
+    wrap_up = lambda x : x + 1 if x != 6 else 1
+    return (die_1 + wrap_up(die_2)) if no_doubles and (die_1 == die_2) else (die_1 + die_2)
 
 # Given two int values, return whichever value is larger. However if the two values have the same 
 # remainder when divided by 5, then the return the smaller value. However, in all cases, if the 
