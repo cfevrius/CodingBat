@@ -33,6 +33,7 @@ def squirrel_play(temp, is_summer):
 # speed can be 5 higher in all cases.
 def caught_speeding(speed, is_birthday):
     result = 0
+    find_speed_limit = lambda base_speed, is_birthday : base_speed + 5 if is_birthday else base_speed
     if speed > (85 if is_birthday else 80):
         result = 2
     if  (66 if is_birthday else 61) <= speed <= (85 if is_birthday else 80):
@@ -180,7 +181,14 @@ def without_doubles(die_1, die_2, no_doubles):
 # two values are the same, return 0. Note: the % "mod" operator computes the remainder, 
 # e.g. 7 % 5 is 2.
 def max_mod_5(a, b):
-    return None
+    result =  0
+    if a == b:
+        result = 0
+    elif a % 5  == b % 5:
+        result =  min(a, b)
+    else:
+        result = max(a, b)
+    return result
 
 # You have a red lottery ticket showing ints a, b, and c, each of which is 0, 1, or 2. If they are 
 # all the value 2, the result is 10. Otherwise if they are all the same, the result is 5. Otherwise 
