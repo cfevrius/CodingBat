@@ -12,12 +12,12 @@ def cigar_party(cigars, is_weekend):
 # With the exception that if either of you has style of 2 or less, then the result is 0 (no). 
 # Otherwise the result is 1 (maybe). 
 def date_fashion(you, date):
-    result = 1
     if you <= 2 or date <= 2:
-        result = 0
+        return 0
     elif you >= 8 or date >= 8:
-        result = 2
-    return result
+        return 2
+    else:
+        return 1
 
 # The squirrels in Palo Alto spend most of the day playing. In particular, they play if the 
 # temperature is between 60 and 90 (inclusive). Unless it is summer, then the upper limit is 
@@ -32,30 +32,28 @@ def squirrel_play(temp, is_summer):
 # If speed is 81 or more, the result is 2. Unless it is your birthday -- on that day, your 
 # speed can be 5 higher in all cases.
 def caught_speeding(speed, is_birthday):
-    result = 0
-    find_speed_limit = lambda base_speed, is_birthday : base_speed + 5 if is_birthday else base_speed
-    if speed > (85 if is_birthday else 80):
-        result = 2
-    if  (66 if is_birthday else 61) <= speed <= (85 if is_birthday else 80):
-        result = 1 
-    return result
+    speed_limit = lambda base_speed, is_birthday : base_speed + 5 if is_birthday else base_speed
+    if speed_limit(80, is_birthday) < speed:
+        return 2
+    elif speed_limit(61, is_birthday) <= speed <= speed_limit(80, is_birthday):
+        return 1 
+    else:
+        return  0
 
 # Given 2 ints, a and b, return their sum. However, sums in the range 10..19 inclusive, 
 # are forbidden, so in that case just return 20.
 def sorta_sum(a, b):
-    return 20 if a+b in range(10, 20) else a+b
+    return 20 if 10 <= a+b <= 20 else a+b
 
 # Given a day of the week encoded as 0=Sun, 1=Mon, 2=Tue, ...6=Sat, and a boolean indicating 
 # if we are on vacation, return a string of the form "7:00" indicating when the alarm clock 
 # should ring. Weekdays, the alarm should be "7:00" and on the weekend it should be "10:00". 
 # Unless we are on vacation -- then on weekdays it should be "10:00" and weekends it should be "off".
 def alarm_clock(day, vacation):
-    result = ''
     if 1 <= day <= 5:
-       result = '10:00' if vacation else '7:00' 
+       return '10:00' if vacation else '7:00' 
     else:
-        result = 'off' if vacation else '10:00' 
-    return result
+        return 'off' if vacation else '10:00' 
 
 # The number 6 is a truly great number. Given two int values, a and b, return true if 
 # either one is 6. Or if their sum or difference is 6. Note: the function abs(num) computes 
@@ -110,38 +108,38 @@ def answer_cell(is_morning, is_mom, is_asleep):
 # However, if either tea or candy is at least double the amount of the other one, the party is great 
 # (2). However, in all cases, if either tea or candy is less than 5, the party is always bad (0).
 def tea_party(tea, candy):
-    result = 1 
     if tea < 5 or candy < 5:
-        result = 0
+        return 0
     elif tea >= (2 * candy) or candy >= (2 * tea):
-        result = 2
-    return result
+        return 2
+    else:
+        return 1
 
 # Given a string str, if the string starts with "f" return "Fizz". If the string ends with "b" 
 # return "Buzz". If both the "f" and "b" conditions are true, return "FizzBuzz". In all other 
 # cases, return the string unchanged.
 def fizz_string(str):
-    result = str
     if str.startswith('f') and str.endswith('b'):
-        result =  'FizzBuzz'
+        return  'FizzBuzz'
     elif str.startswith('f'):
-        result =  'Fizz'
+        return  'Fizz'
     elif str.endswith('b'):
-        result =  'Buzz'
-    return result
+        return 'Buzz'
+    else:
+        return str
 
 # Given an int n, return the string form of the number followed by "!". So the int 6 yields "6!". 
 # Except if the number is divisible by 3 use "Fizz" instead of the number, and if the number is 
 # divisible by 5 use "Buzz", and if divisible by both 3 and 5, use "FizzBuzz". 
 def fizz_string_2(n):
-    result = f'{n}!'
     if n % 3 == 0 and n % 5 == 0:
-        result = 'FizzBuzz!'
+        return 'FizzBuzz!'
     elif n % 3 == 0:
-        result = 'Fizz!'
+        return 'Fizz!'
     elif n % 5 == 0:
-        result = 'Buzz!'
-    return result
+        return 'Buzz!'
+    else:
+        return f'{n}!'
 
 # Given three ints, a b c, return true if it is possible to add two of the ints to get the third.
 def two_as_one(a, b, c):
@@ -181,14 +179,12 @@ def without_doubles(die_1, die_2, no_doubles):
 # two values are the same, return 0. Note: the % "mod" operator computes the remainder, 
 # e.g. 7 % 5 is 2.
 def max_mod_5(a, b):
-    result =  0
     if a == b:
-        result = 0
+        return 0
     elif a % 5  == b % 5:
-        result =  min(a, b)
+        return  min(a, b)
     else:
-        result = max(a, b)
-    return result
+        return max(a, b)
 
 # You have a red lottery ticket showing ints a, b, and c, each of which is 0, 1, or 2. If they are 
 # all the value 2, the result is 10. Otherwise if they are all the same, the result is 5. Otherwise 

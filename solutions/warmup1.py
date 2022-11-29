@@ -86,8 +86,8 @@ def start_hi(str):
 
 # Given two temperatures, return true if one is less than 0 and the other is greater than 100.
 def icy_hot(temp1, temp2):
-    one_icy_another_hot = lambda x, y : x < 0 and y > 100
-    return one_icy_another_hot(temp1, temp2) or one_icy_another_hot(temp2, temp1)
+    is_icy_hot = lambda x, y : x < 0 and y > 100
+    return is_icy_hot(temp1, temp2) or is_icy_hot(temp2, temp1)
 
 # Given 2 int values, return true if either of them is in the range 10..20 inclusive.
 def in_1020(a, b):
