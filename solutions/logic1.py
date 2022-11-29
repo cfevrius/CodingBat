@@ -216,17 +216,30 @@ def green_ticket(a, b, c):
 # the result is 10. Otherwise if the ab sum is exactly 10 more than either bc or ac sums, the result 
 # is 5. Otherwise the result is 0.
 def blue_ticket(a, b, c):
-    return None
+    is_10 = lambda num : num == 10
+    is_10_more = lambda a , b : a == (b + 10)
+    if any(map(is_10, [a + b, a + c, b + c])):
+        return 10
+    elif is_10_more(a + b, b + c) or is_10_more(a + b, a + c):
+        return 5
+    else:
+        return 0
 
 # Given two ints, each in the range 10..99, return true if there is a digit that appears in both 
-# numbers, such as the 2 in 12 and 23. (Note: division, e.g. n/10, gives the left digit while the 
+# numbers, such as the 2 in 12 and 23. (Note: division, e.g. n//10, gives the left digit while the 
 # % "mod" n%10 gives the right digit.)
 def share_digit(a, b):
-    return None
+    find_digits = lambda x : (x // 10, x % 10)
+    is_in_b = lambda x : x in find_digits(b)
+    return any(map(is_in_b, find_digits(a)))
 
 # Given 2 non-negative ints, a and b, return their sum, so long as the sum has the same number of 
 # digits as a. If the sum has more digits than a, just return a without b. (Note: one way to 
 # compute the number of digits of a non-negative int n is to convert it to a string with 
 # String.valueOf(n) and then check the length of the string.) 
 def sum_limit(a, b):
-    return None
+    num_digits = lambda x : len(str(x))
+    if num_digits(a + b) == num_digits(a):
+        return a + b
+    elif num_digits(a + b) > num_digits(a):
+        return a
