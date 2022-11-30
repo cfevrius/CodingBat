@@ -113,8 +113,6 @@ def del_del(str):
     return f'{str[0]}{str[4:]}' if len(str) >= 4 and str[1:4] == 'del' else str
 
 # Return true if the given string begins with "mix", except the 'm' can be anything, so "pix", "9ix" .. all count.
-# 
-# (NOTE): Come up with a regex solution. 
 def mix_start(str):
     return len(str) >= 3 and str[1:3] == 'ix'
 
@@ -149,8 +147,6 @@ def max_1020(a, b):
     return 0 if len(nums_in_range) == 0 else max(nums_in_range)
 
 # Return true if the given string contains between 1 and 3 'e' chars.
-# 
-# (NOTE): Look into regex solution
 def string_e(str):
     num_es = str.count('e')
     return 1 <= num_es <= 3
