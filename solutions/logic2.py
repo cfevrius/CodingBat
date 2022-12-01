@@ -9,7 +9,10 @@ def make_bricks(small, big, goal):
 # Given 3 int values, a b c, return their sum. However, if one of the values is 
 # the same as another of the values, it does not count towards the sum.
 def lone_sum(a, b, c):
-    return None
+    nums = (a, b, c)
+    occurrences = (nums.count(a), nums.count(b), nums.count(c))
+    num_freq = dict(zip(nums, occurrences))
+    return sum([key for key, val in num_freq.items() if val == 1])
 
 # Given 3 int values, a b c, return their sum. However, if one of the values is 13 
 # then it does not count towards the sum and values to its right do not count. So 
