@@ -4,7 +4,12 @@
 # is possible to make the goal by choosing from the given bricks. This is a little 
 # harder than it looks and can be done without any loops. 
 def make_bricks(small, big, goal):
-    return None
+    # Use integer dividsion to find how many big bricks we can use.
+    # If we don't have enough big bricks, we need to replace them with small bricks.
+    smalls_to_replace_missing_bigs = 5 * max(goal // 5 - big, 0)
+    remaining_smalls_needed = goal % 5
+    total_smalls_needed = smalls_to_replace_missing_bigs + remaining_smalls_needed
+    return small >= total_smalls_needed
 
 # Given 3 int values, a b c, return their sum. However, if one of the values is 
 # the same as another of the values, it does not count towards the sum.
@@ -75,4 +80,7 @@ def evenly_spaces(a, b, c):
 # (5 kilos each). Return the number of small bars to use, assuming we always use big bars before 
 # small bars. Return -1 if it can't be done.
 def make_chocolate(small, big, goal):
-    return None
+    smalls_to_replace_missing_bigs = 5 * max(goal // 5 - big, 0)
+    remaining_smalls_needed = goal % 5
+    total_smalls_needed = smalls_to_replace_missing_bigs + remaining_smalls_needed
+    return total_smalls_needed if small >= total_smalls_needed else -1
