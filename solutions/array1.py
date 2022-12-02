@@ -86,13 +86,13 @@ def start_1(a, b):
     matches = [x for x in [a, b] if x and x[0] == 1]
     return len(matches)
 
-# Start with 2 int arrays, a and b, each length 2. Consider the sum of the values in each array. 
-# Return the array which has the largest sum. In event of a tie, return a.
+# Start with 2 int arrays, a and b, each length 2. Consider the sum of the values in each 
+# array. Return the array which has the largest sum. In event of a tie, return a.
 def bigger_two(a, b):
     return sorted([b, a], key=sum)[1]
 
-# Given an array of ints of even length, return a new array length 2 containing the middle two elements 
-# from the original array. The original array will be length 2 or more.
+# Given an array of ints of even length, return a new array length 2 containing the middle 
+# two elements from the original array. The original array will be length 2 or more.
 def make_middle(nums):
     start = (len(nums) // 2) - 1
     return nums[start:start+2]
@@ -112,29 +112,30 @@ def mid_three(nums):
     start = len(nums) // 2 - 1
     return nums[start:start+3]
 
-# Given an array of ints of odd length, look at the first, last, and middle values in the array and return 
-# the largest. The array length will be a least 1.
+# Given an array of ints of odd length, look at the first, last, and middle values in the array 
+# and return the largest. The array length will be a least 1.
 def max_triple(nums):
     return sorted([nums[0], nums[len(nums) // 2], nums[-1] ])[-1]
 
-# Given an int array of any length, return a new array of its first 2 elements. If the array is smaller than length 2, 
-# use whatever elements are present.
+# Given an int array of any length, return a new array of its first 2 elements. If the array is 
+# smaller than length 2, use whatever elements are present.
 def front_piece(nums):
     return nums[:2]
 
-# We'll say that a 1 immediately followed by a 3 in an array is an "unlucky" 1. Return true if the given array contains an 
-# unlucky 1 in the first 2 or last 2 positions in the array.
+# We'll say that a 1 immediately followed by a 3 in an array is an "unlucky" 1. Return true if the 
+# given array contains an unlucky 1 in the first 2 or last 2 positions in the array.
 def unlucky_1(nums):
     length = len(nums)
     matches = [i for i, x in enumerate(nums[:-1]) if x == 1 and nums[i+1] == 3 and i in {0, 1, length-1, length-2}]
     return len(matches) > 0
 
-# Given 2 int arrays, a and b, return a new array length 2 containing, as much as will fit, the elements from a followed by the elements 
-# from b. The arrays may be any length, including 0, but there will be 2 or more elements available between the 2 arrays.
+# Given 2 int arrays, a and b, return a new array length 2 containing, as much as will fit, the 
+# elements from a followed by the elements from b. The arrays may be any length, including 0, but 
+# there will be 2 or more elements available between the 2 arrays.
 def make_2(a, b):
     return (a + b)[:2]
 
-# Given 2 int arrays, a and b, of any length, return a new array with the first element of each array. If either array is length 0, ignore that 
-# array.
+# Given 2 int arrays, a and b, of any length, return a new array with the first element of each 
+# array. If either array is length 0, ignore that array.
 def front_1_1(a, b):
     return a[:1] + b[:1]

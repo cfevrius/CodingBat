@@ -38,20 +38,21 @@ def makes_10(a, b):
 def near_hundred(n):
     return abs(n - 100) <= 10 or abs(n - 200) <= 10
 
-# Given 2 int values, return true if one is negative and one is positive. Except if the parameter "negative" 
-# is true, then return true only if both are negative.
+# Given 2 int values, return true if one is negative and one is positive. Except if the parameter 
+# "negative" is true, then return true only if both are negative.
 def pos_neg(a, b, negative):
     result = (a < 0 and b < 0) if negative else (a * b) < 0
     return result
 
-# Given a string, return a new string where "not " has been added to the front. However, if the string already 
-# begins with "not", return the string unchanged.
+# Given a string, return a new string where "not " has been added to the front. However, if 
+# the string already begins with "not", return the string unchanged.
 def not_string(str):
     result = f'not {str}' if str[0:3] != "not" else str
     return result
 
-# Given a non-empty string and an int n, return a new string where the char at index n has been removed. The value 
-# of n will be a valid index of a char in the original string (i.e. n will be in the range 0..str.length()-1 inclusive).
+# Given a non-empty string and an int n, return a new string where the char at index n has been 
+# removed. The value of n will be a valid index of a char in the original string (i.e. n will be 
+# in the range 0..str.length()-1 inclusive).
 def missing_char(str, n):
     return f"{str[:n]}{str[n+1:]}"
 
@@ -65,18 +66,20 @@ def front_back(str):
 def front_3(str):
     return 3 * str[0:3]
 
-# Given a string, take the last char and return a new string with the last char added at the front and back, so "cat" 
-# yields "tcatt". The original string will be length 1 or more.
+# Given a string, take the last char and return a new string with the last char added at the 
+# front and back, so "cat" yields "tcatt". The original string will be length 1 or more.
 def back_around(str):
     back = str[-1]
     return f"{back}{str}{back}"
 
-# Return true if the given non-negative number is a multiple of 3 or a multiple of 5. Use the % "mod" operator.
+# Return true if the given non-negative number is a multiple of 3 or a multiple of 5. 
+# Use the % "mod" operator.
 def or_35(n):
     return n % 3 == 0 or n % 5 == 0
 
-# Given a string, take the first 2 chars and return the string with the 2 chars added at both the front and back, 
-# so "kitten" yields"kikittenki". If the string length is less than 2, use whatever chars are there.
+# Given a string, take the first 2 chars and return the string with the 2 chars added at both 
+# the front and back, so "kitten" yields"kikittenki". If the string length is less than 2, use 
+# whatever chars are there.
 def front_22(str):
     return f'{str[:2]}{str}{str[0:2]}'
 
@@ -94,30 +97,31 @@ def in_1020(a, b):
     in_range = lambda x : 10 <= x <= 20
     return in_range(a) or in_range(b)
 
-# We'll say that a number is "teen" if it is in the range 13..19 inclusive. Given 3 int values, return 
-# true if 1 or more of them are teen.
+# We'll say that a number is "teen" if it is in the range 13..19 inclusive. Given 3 int values, 
+# return true if 1 or more of them are teen.
 def has_teen(a, b, c):
     is_teen = lambda x : 13 <= x <= 19
     return is_teen(a) or is_teen(b) or is_teen(c)
 
-# We'll say that a number is "teen" if it is in the range 13..19 inclusive. Given 2 int values, return true 
-# if one or the other is teen, but not both.
+# We'll say that a number is "teen" if it is in the range 13..19 inclusive. Given 2 int values, 
+# return true if one or the other is teen, but not both.
 def lone_teen(a, b):
     is_teen = lambda x : 13 <= x <= 19
     teens = [x for x in [a, b] if is_teen(x)]
     return len(teens) == 1
 
-# Given a string, if the string "del" appears starting at index 1, return a string where that "del" has been deleted. 
-# Otherwise, return the string unchanged.
+# Given a string, if the string "del" appears starting at index 1, return a string where that 
+# "del" has been deleted. Otherwise, return the string unchanged.
 def del_del(str):
     return f'{str[0]}{str[4:]}' if len(str) >= 4 and str[1:4] == 'del' else str
 
-# Return true if the given string begins with "mix", except the 'm' can be anything, so "pix", "9ix" .. all count.
+# Return true if the given string begins with "mix", except the 'm' can be anything, so "pix", 
+# "9ix" .. all count.
 def mix_start(str):
     return len(str) >= 3 and str[1:3] == 'ix'
 
-# Given a string, return a string made of the first 2 chars (if present), however include first char only if it is 'o' 
-# and include the second only if it is 'z', so "ozymandias" yields "oz".
+# Given a string, return a string made of the first 2 chars (if present), however include first 
+# char only if it is 'o' and include the second only if it is 'z', so "ozymandias" yields "oz".
 def start_oz(str):
     first_char_is_o = str[:1] if str[:1] == 'o' else ''
     second_char_is_z = str[1:2] if str[1:2] == 'z' else ''
@@ -127,21 +131,22 @@ def start_oz(str):
 def int_max(a, b, c):
     return max(a, b, c)
 
-# Given 2 int values, return whichever value is nearest to the value 10, or return 0 in the event of a tie. Note that 
-# abs(n) returns the absolute value of a number.
+# Given 2 int values, return whichever value is nearest to the value 10, or return 0 in the event 
+# of a tie. Note that abs(n) returns the absolute value of a number.
 def close_10(a, b):
     a_dist_10 = abs(10 - a)
     b_dist_10 = abs(10 - b)
     return 0 if a_dist_10 == b_dist_10 else (a if a_dist_10 < b_dist_10 else b)
 
-# Given 2 int values, return true if they are both in the range 30..40 inclusive, or they are both in the range 40..50 
-# inclusive.
+# Given 2 int values, return true if they are both in the range 30..40 inclusive, or they are both 
+# in the range 40..50 inclusive.
 def in_3040(a, b):
     in_30_40 = lambda x : 30 <= x <= 40
     in_40_50 = lambda x : 40 <= x <= 50
     return (in_30_40(a) and in_30_40(b)) or (in_40_50(a) and in_40_50(b))
 
-# Given 2 positive int values, return the larger value that is in the range 10..20 inclusive, or return 0 if neither is in that range.
+# Given 2 positive int values, return the larger value that is in the range 10..20 inclusive, or 
+# return 0 if neither is in that range.
 def max_1020(a, b):
     nums_in_range = [x for x in [a, b] if 10 <= x <= 20]
     return 0 if len(nums_in_range) == 0 else max(nums_in_range)
@@ -151,21 +156,22 @@ def string_e(str):
     num_es = str.count('e')
     return 1 <= num_es <= 3
 
-# Given two non-negative int values, return true if they have the same last digit, such as with 27 and 57. Note that the % "mod" operator 
-# computes remainders, so 17 % 10 is 7.
+# Given two non-negative int values, return true if they have the same last digit, such as with 27 
+# and 57. Note that the % "mod" operator computes remainders, so 17 % 10 is 7.
 def last_digit(a, b):
     a_last_digit = a % 10
     b_last_digit = b % 10
     return a_last_digit == b_last_digit
 
-# Given a string, return a new string where the last 3 chars are now in upper case. If the string has less than 3 chars, uppercase whatever 
-# is there. Note that str.upper() returns the uppercase version of a string.
+# Given a string, return a new string where the last 3 chars are now in upper case. If the string has 
+# less than 3 chars, uppercase whatever is there. Note that str.upper() returns the uppercase version 
+# of a string.
 def end_up(str):
     front = str[:-3]
     end = str[-3:]
     return f"{front}{end.upper()}"
 
-# Given a non-empty string and an int N, return the string made starting with char 0, and then every Nth char of the string. So if N is 3, use 
-# char 0, 3, 6, ... and so on. N is 1 or more.
+# Given a non-empty string and an int N, return the string made starting with char 0, and then every 
+# Nth char of the string. So if N is 3, use char 0, 3, 6, ... and so on. N is 1 or more.
 def every_nth(str, n):
     return str[::n]
