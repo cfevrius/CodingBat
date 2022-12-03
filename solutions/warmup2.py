@@ -80,7 +80,9 @@ def alt_pairs(str):
 # Given a string, return a version where all the 'yak' are removed, but the 'a'
 # can by any char. The 'yak' string will not overlap.
 def string_yak(str):
-    indexes = [(i, i+1, i+2) for i, _ in enumerate(str[:-2]) if str[i] == 'y' and str[i+2] == 'k' ]
+    indexes = [(i, i+1, i+2) 
+               for i, _ in enumerate(str[:-2]) 
+               if str[i] == 'y' and str[i+2] == 'k' ]
     flatten_indexes = [element for item in indexes for element in item]
     return ''.join([x for i, x in enumerate(str) if i not in flatten_indexes])
 
@@ -100,5 +102,7 @@ def no_triples(nums):
 # by the value plus 5, followed by the value minus 1. Additionally the 271 counts even if 
 # the "1" differs by 2 or less from the correct value.
 def has_271(nums):
-    matches = [x for i, x in enumerate(nums[:-2]) if (nums[i+1] == nums[i] + 5) and (abs((nums[i] - 1) - nums[i+2]) <= 2) ]
+    matches = [x 
+               for i, x in enumerate(nums[:-2]) 
+               if (nums[i+1] == nums[i] + 5) and (abs((nums[i] - 1) - nums[i+2]) <= 2) ]
     return len(matches) > 0

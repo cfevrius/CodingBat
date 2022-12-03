@@ -164,7 +164,9 @@ def without2(str):
 # Given a string, return a version without the first 2 chars. Except keep the first char if it 
 # is 'a' and keep the second char if it is 'b'. The string may be any length. Harder than it looks.
 def de_front(str):
-    return ''.join([x for i, x in enumerate(str) if (i != 0 or x == 'a')  and (i != 1 or x == 'b')])
+    return ''.join([x 
+                    for i, x in enumerate(str) 
+                    if (i != 0 or x == 'a')  and (i != 1 or x == 'b')])
 
 # Given a string and a second "word" string, we'll say that the word matches the string if it 
 # appears at the front of the string, except its first char does not need to match exactly. On 
@@ -177,9 +179,13 @@ def start_word(str, word):
 # Given a string, if the first or last chars are 'x', return the string without those 'x' chars, 
 # and otherwise return the string unchanged.
 def without_x(str):
-    return ''.join([x for i, x in enumerate(str) if (i != 0 or x != 'x') and (i != (len(str) - 1) or x != 'x') ])
+    return ''.join([x 
+                    for i, x in enumerate(str) 
+                    if (i != 0 or x != 'x') and (i != (len(str) - 1) or x != 'x') ])
 
 # Given a string, if one or both of the first 2 chars is 'x', return the string without those 
 # 'x' chars, and otherwise return the string unchanged. This is a little harder than it looks.
 def without_x_2(str):
-    return ''.join([x for i, x in enumerate(str) if (i != 0 or x != 'x') and (i != 1 or x != 'x')])
+    return ''.join([x 
+                    for i, x in enumerate(str) 
+                    if (i != 0 or x != 'x') and (i != 1 or x != 'x')])

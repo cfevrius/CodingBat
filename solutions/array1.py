@@ -126,7 +126,9 @@ def front_piece(nums):
 # given array contains an unlucky 1 in the first 2 or last 2 positions in the array.
 def unlucky_1(nums):
     length = len(nums)
-    matches = [i for i, x in enumerate(nums[:-1]) if x == 1 and nums[i+1] == 3 and i in {0, 1, length-1, length-2}]
+    matches = [i 
+               for i, x in enumerate(nums[:-1]) 
+               if x == 1 and nums[i+1] == 3 and i in {0, 1, length-1, length-2}]
     return len(matches) > 0
 
 # Given 2 int arrays, a and b, return a new array length 2 containing, as much as will fit, the 
