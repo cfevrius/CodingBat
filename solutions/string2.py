@@ -9,70 +9,95 @@ def count_hi(str):
 
 # Return true if the string "cat" and "dog" appear the same number of times in the given string.
 def cat_dog(str):
-    slice_len = 3 #  
-    count_matches = lambda search_str, source_str : len([i 
-                                                         for i, _ in enumerate(source_str[:-(slice_len-1)]) 
-                                                         if source_str[i:i+slice_len] == search_str])
-    return count_matches('cat', str) == count_matches('dog', str)
+    slice_len = 3  
+    count_matches = lambda search_str : len([i 
+                                             for i, _ in enumerate(str[:-(slice_len-1)]) 
+                                             if str[i:i+slice_len] == search_str])
+    return count_matches('cat') == count_matches('dog')
 
 # Return the number of times that the string "code" appears anywhere in the given string, except 
 # we'll accept any letter for the 'd', so "cope" and "cooe" count.
 def count_code(str):
-    has_code_at_index = lambda str, index: all([str[index] == 'c', str[index + 1] == 'o', str[index + 3] == 'e'])
-    matches = [i for i, _ in enumerate(str[:-3]) if  has_code_at_index(str, i)]
+    has_code_at_index = lambda index: all([str[index] == 'c', str[index + 1] == 'o', str[index + 3] == 'e'])
+    matches = [i for i, _ in enumerate(str[:-3]) if  has_code_at_index(i)]
     return len(matches)
 
 # Given two strings, return true if either of the strings appears at the very end of the other string, 
 # ignoring upper/lower case differences (in other words, the computation should not be "case sensitive"). 
 # Note: str.lower() returns the lowercase version of a string.
 def end_other(a, b):
-    return 
+    does_end = lambda a, b: a.lower().endswith(b.lower())
+    return does_end(a, b) or does_end(b, a)
 
 # Return true if the given string contains an appearance of "xyz" where the xyz is not directly preceeded 
 # by a period (.). So "xxyz" counts but "x.xyz" does not.
 def xyz_there(str):
-    return None
+    has_match_at_index = lambda index: str[index:index+3] == 'xyz' and ((index == 0) or str[index - 1] != '.')
+    matches = [i for i, _ in enumerate(str[1:]) if has_match_at_index(i)]
+    return len(matches)
 
 # Return true if the given string contains a "bob" string, but where the middle 'o' char can be any char.
 def bob_there(str):
-    return None
+    has_match_at_index = lambda i : str[i] == 'b' and str[i+2] == 'b'
+    matches = [i for i, _ in enumerate(str[:-2]) if has_match_at_index(i)]
+    return len(matches) > 0
 
 # We'll say that a String is xy-balanced if for all the 'x' chars in the string, there exists a 'y' char 
 # somewhere later in the string. So "xxy" is balanced, but "xyx" is not. One 'y' can balance multiple 'x's. 
 # Return true if the given string is xy-balanced.
 def xyz_balance(str):
-    return None
+    is_balanced = lambda i : 'y' in str[i:]
+    are_xs_balanced = [is_balanced(i) for i, v in enumerate(str) if v == 'x']
+    return all(are_xs_balanced)
 
 # Given two strings, a and b, create a bigger string made of the first char of a, the first char of b, the 
 # second char of a, the second char of b, and so on. Any leftover chars go at the end of the result.
 def mix_string(a, b):
-    return None
+    front = ''.join([item for tup in zip(a, b) for item in tup])
+    shorter, longer = sorted((a, b), key=len)
+    end = longer[-(len(longer) - len(shorter)):] if len(longer) > len(shorter) else ''
+    return f'{front}{end}'
 
 # Given a string and an int n, return a string made of n repetitions of the last n characters of the string. 
 # You may assume that n is between 0 and the length of the string, inclusive.
 def repeat_end(str, n):
-    return None
+    return n * str[-n:]
 
 # Given a string and an int n, return a string made of the first n characters of the string, followed by the 
 # first n-1 characters of the string, and so on. You may assume that n is between 0 and the length of the string, 
-# inclusive (i.e. n >= 0 and n <= len(str)).
+# inclusive (i.e. 0 <= n <= len(str)).
 def repeat_front(str, n):
-    return None
+    return ''.join([str[:i] for i in reversed(range(1, n+1))])
 
 # Given two strings, word and a separator sep, return a big string made of count occurrences of the word, separated 
 # by the separator string.
 def repeat_separator(word, sep, count):
-    return None
+    return sep.join([word] * count)
 
 # Given a string, consider the prefix string made of the first N chars of the string. Does that prefix string appear 
 # somewhere else in the string? Assume that the string is not empty and that N is in the range 1..len(str).
 def prefix_again(str, n):
-    return None
+    return str[:n] in str[n:]
 
 # Given a string, does "xyz" appear in the middle of the string? To define middle, we'll say that the number of chars 
 # to the left and right of the "xyz" must differ by at most one. This problem is harder than it looks.
 def xyz_middle(str):
-    return None
+    span = 4
+    ceil = lambda x : int(x + 0.5)
+    start = ceil( (len(str) / 2) - (span / 2) )
+    middle = str[start:start+span]
+
+    # If the length of the string is ODD, the 'xyz' must be at *start* because 
+    # there will be the same amount of spaces to either side of 'xyz':
+    # 
+    # e.g. 'AAAxyzBBB'
+    # 
+    # So the 'xyz' string MUST be exactly in the middle.
+    # Even numbers can be anywhere in span.
+    if len(str) % 2 == 1:
+        return str[start:start+3] =='xyz'
+    else:
+        return 'xyz' in middle
 
 # A sandwich is two pieces of bread with something in between. Return the string that is between the first and last 
 # appearance of "bread" in the given string, or return the empty string "" if there are not two pieces of bread.

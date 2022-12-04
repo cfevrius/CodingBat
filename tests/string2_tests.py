@@ -203,7 +203,7 @@ class TestsString2(unittest.TestCase):
         self.assertEqual(string2.xyz_middle('xyzxyzAxyzBxyzxyz'), True)
         self.assertEqual(string2.xyz_middle('xyzxyzxyzBxyzxyz'), True)
         self.assertEqual(string2.xyz_middle('xyzxyzAxyzxyzxyz'), True)
-        self.assertEqual(string2.xyz_middle('xyzxyzAxyzxyzxy'), True)
+        self.assertEqual(string2.xyz_middle('xyzxyzAxyzxyzxy'), False)
         self.assertEqual(string2.xyz_middle('AxyzxyzBB'), False)
         self.assertEqual(string2.xyz_middle(''), False)
         self.assertEqual(string2.xyz_middle('x'), False)
