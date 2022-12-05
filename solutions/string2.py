@@ -88,7 +88,7 @@ def xyz_middle(str):
     middle = str[start:start+span]
 
     # If the length of the string is ODD, the 'xyz' must be at *start* because 
-    # there will be the same amount of spaces to either side of 'xyz':
+    # there will be the same amount of spaces on either side of 'xyz':
     # 
     # e.g. 'AAAxyzBBB'
     # 
@@ -111,8 +111,7 @@ def get_sandwich(str):
 # Returns true if for every '*' (star) in the string, if there are chars both immediately before and after the star, 
 # they are the same.
 def same_star_char(str):
-    has_chars_before_and_after = lambda i: {i-1, i+1}.issubset(set(range(len(str))))
-    is_valid = lambda i : (not has_chars_before_and_after(i)) or (str[i-1] == str[i+1])
+    is_valid = lambda i : (not 0 < i < (len(str) - 1)) or (str[i-1] == str[i+1])
     are_stars_valid = [is_valid(i) for i, v in enumerate(str) if v == '*']
     return all(are_stars_valid)
 
@@ -120,25 +119,45 @@ def same_star_char(str):
 # Repeat this process for each subsequent group of 3 chars, so "abcdef" yields "bcaefd". Ignore any group of fewer than 
 # 3 chars at the end.
 def one_two(str):
-    return None
+    groups_of_3 = [str[i:i+3]
+                   for i, _ in enumerate(str)
+                   if i % 3 == 0 and len(str[i:i+3]) >= 3]
+    updated_front = ''.join(map(lambda str: str[1:] + str[0], groups_of_3))
+    return updated_front
 
 # Look for patterns like "zip" and "zap" in the string -- length-3, starting with 'z' and ending with 'p'. Return a string 
 # where for all such words, the middle letter is gone, so "zipXzap" yields "zpXzp".
 def zip_zap(str):
-    return None
+    indices_to_remove = [i 
+                         for i, _ in enumerate(str) 
+                         if 0 < i < (len(str) - 1) and str[i-1] == 'z' and str[i+1] == 'p']
+    return ''.join([char for i, char in enumerate(str) if i not in indices_to_remove])
 
 # Return a version of the given string, where for every star (*) in the string the star and the chars immediately to its left 
 # and right are gone. So "ab*cd" yields "ad" and "ab**cd" also yields "ad".
 def star_out(str):
-    return None
+    indices_to_remove = [(i - 1, i, i + 1)
+                         for i, v in enumerate(str)
+                         if v == '*']
+
+    flattened_indices_to_remove = [item for tup in indices_to_remove for item in tup]
+    return ''.join([char for i, char in enumerate(str) if i not in flattened_indices_to_remove]) 
 
 # Given a string and a non-empty word string, return a version of the original String where all chars have been replaced by pluses 
 # ("+"), except for appearances of the word string which are preserved unchanged.
 def plus_out(str, word):
-    return None
+    word_len = len(word)
+    indices_to_ignore = [range(i,i+word_len) for i, v in enumerate(str) if str[i:i+word_len] == word]
+    flattened_indices_to_ignore = [num for seq in indices_to_ignore for num in seq]
+    return ''.join([v if i in flattened_indices_to_ignore else '+' for i, v in enumerate(str)])
     
 # Given a string and a non-empty word string, return a string made of each char just before and just after every appearance of the 
 # word in the string. Ignore cases where there is no char before or after the word, and a char may be included twice if it is between 
 # two words.
 def word_ends(str, word):
-    return None
+    word_len = len(word)
+    get_char_at_index = lambda i: str[i] if 0 <= i <= len(str) - 1 else ''
+    chars_before_and_after_match = [f'{get_char_at_index(i - 1)}{get_char_at_index(i + word_len)}'
+                                    for i, v in enumerate(str) 
+                                    if str[i : i + word_len] == word]
+    return ''.join(chars_before_and_after_match)
