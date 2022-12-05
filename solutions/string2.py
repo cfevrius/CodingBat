@@ -102,12 +102,19 @@ def xyz_middle(str):
 # A sandwich is two pieces of bread with something in between. Return the string that is between the first and last 
 # appearance of "bread" in the given string, or return the empty string "" if there are not two pieces of bread.
 def get_sandwich(str):
-    return None
+    sandwich_indices = [i for i, _ in enumerate(str[:-4]) if str[i:i+5] == 'bread']
+    if len(sandwich_indices) > 1:
+        first, last = sandwich_indices[0], sandwich_indices[-1]
+        return str[first + 5:last]
+    return ""
 
 # Returns true if for every '*' (star) in the string, if there are chars both immediately before and after the star, 
 # they are the same.
 def same_star_char(str):
-    return None
+    has_chars_before_and_after = lambda i: {i-1, i+1}.issubset(set(range(len(str))))
+    is_valid = lambda i : (not has_chars_before_and_after(i)) or (str[i-1] == str[i+1])
+    are_stars_valid = [is_valid(i) for i, v in enumerate(str) if v == '*']
+    return all(are_stars_valid)
 
 # Given a string, compute a new string by moving the first char to come after the next two chars, so "abc" yields "bca". 
 # Repeat this process for each subsequent group of 3 chars, so "abcdef" yields "bcaefd". Ignore any group of fewer than 
