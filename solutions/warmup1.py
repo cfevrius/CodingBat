@@ -46,31 +46,31 @@ def pos_neg(a, b, negative):
 
 # Given a string, return a new string where "not " has been added to the front. However, if 
 # the string already begins with "not", return the string unchanged.
-def not_string(str):
-    result = f'not {str}' if str[0:3] != "not" else str
+def not_string(string):
+    result = f'not {string}' if string[0:3] != "not" else string
     return result
 
 # Given a non-empty string and an int n, return a new string where the char at index n has been 
 # removed. The value of n will be a valid index of a char in the original string (i.e. n will be 
-# in the range 0..str.length()-1 inclusive).
-def missing_char(str, n):
-    return f"{str[:n]}{str[n+1:]}"
+# in the range 0..len(string)-1 inclusive).
+def missing_char(string, n):
+    return f"{string[:n]}{string[n+1:]}"
 
 # Given a string, return a new string where the first and last chars have been exchanged.
-def front_back(str):
-    return f'{str[-1]}{str[1:-1]}{str[0]}' if len(str) > 1 else str
+def front_back(string):
+    return f'{string[-1]}{string[1:-1]}{string[0]}' if len(string) > 1 else string
 
 # Given a string, we'll say that the front is the first 3 chars of the string. If the string 
 # length is less than 3, the front is whatever is there. Return a new string which is 3 copies of 
 # the front.
-def front_3(str):
-    return 3 * str[0:3]
+def front_3(string):
+    return 3 * string[0:3]
 
 # Given a string, take the last char and return a new string with the last char added at the 
 # front and back, so "cat" yields "tcatt". The original string will be length 1 or more.
-def back_around(str):
-    back = str[-1]
-    return f"{back}{str}{back}"
+def back_around(string):
+    back = string[-1]
+    return f"{back}{string}{back}"
 
 # Return true if the given non-negative number is a multiple of 3 or a multiple of 5. 
 # Use the % "mod" operator.
@@ -80,12 +80,12 @@ def or_35(n):
 # Given a string, take the first 2 chars and return the string with the 2 chars added at both 
 # the front and back, so "kitten" yields"kikittenki". If the string length is less than 2, use 
 # whatever chars are there.
-def front_22(str):
-    return f'{str[:2]}{str}{str[0:2]}'
+def front_22(string):
+    return f'{string[:2]}{string}{string[0:2]}'
 
 # Given a string, return true if the string starts with "hi" and false otherwise.
-def start_hi(str):
-    return str.startswith('hi')
+def start_hi(string):
+    return string.startswith('hi')
 
 # Given two temperatures, return true if one is less than 0 and the other is greater than 100.
 def icy_hot(temp1, temp2):
@@ -112,19 +112,19 @@ def lone_teen(a, b):
 
 # Given a string, if the string "del" appears starting at index 1, return a string where that 
 # "del" has been deleted. Otherwise, return the string unchanged.
-def del_del(str):
-    return f'{str[0]}{str[4:]}' if len(str) >= 4 and str[1:4] == 'del' else str
+def del_del(string):
+    return f'{string[0]}{string[4:]}' if len(string) >= 4 and string[1:4] == 'del' else string
 
 # Return true if the given string begins with "mix", except the 'm' can be anything, so "pix", 
 # "9ix" .. all count.
-def mix_start(str):
-    return len(str) >= 3 and str[1:3] == 'ix'
+def mix_start(string):
+    return len(string) >= 3 and string[1:3] == 'ix'
 
 # Given a string, return a string made of the first 2 chars (if present), however include first 
 # char only if it is 'o' and include the second only if it is 'z', so "ozymandias" yields "oz".
-def start_oz(str):
-    first_char_is_o = str[:1] if str[:1] == 'o' else ''
-    second_char_is_z = str[1:2] if str[1:2] == 'z' else ''
+def start_oz(string):
+    first_char_is_o = string[:1] if string[:1] == 'o' else ''
+    second_char_is_z = string[1:2] if string[1:2] == 'z' else ''
     return f"{first_char_is_o}{second_char_is_z}"
 
 # Given three int values, a b c, return the largest.
@@ -152,8 +152,8 @@ def max_1020(a, b):
     return 0 if len(nums_in_range) == 0 else max(nums_in_range)
 
 # Return true if the given string contains between 1 and 3 'e' chars.
-def string_e(str):
-    num_es = str.count('e')
+def string_e(string):
+    num_es = string.count('e')
     return 1 <= num_es <= 3
 
 # Given two non-negative int values, return true if they have the same last digit, such as with 27 
@@ -164,14 +164,14 @@ def last_digit(a, b):
     return a_last_digit == b_last_digit
 
 # Given a string, return a new string where the last 3 chars are now in upper case. If the string has 
-# less than 3 chars, uppercase whatever is there. Note that str.upper() returns the uppercase version 
+# less than 3 chars, uppercase whatever is there. Note that string.upper() returns the uppercase version 
 # of a string.
-def end_up(str):
-    front = str[:-3]
-    end = str[-3:]
+def end_up(string):
+    front = string[:-3]
+    end = string[-3:]
     return f"{front}{end.upper()}"
 
 # Given a non-empty string and an int N, return the string made starting with char 0, and then every 
 # Nth char of the string. So if N is 3, use char 0, 3, 6, ... and so on. N is 1 or more.
-def every_nth(str, n):
-    return str[::n]
+def every_nth(string, n):
+    return string[::n]

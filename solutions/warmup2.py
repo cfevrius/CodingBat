@@ -1,45 +1,45 @@
 # Given a string and a non-negative int n, return 
 # a larger string that is n copies of the original string.
-def string_times(str, n):
-    return str * n
+def string_times(string, n):
+    return string * n
 
 # Given a string and a non-negative int n, we'll say that 
 # the front of the string is the first 3 chars, or whatever is there 
 # if the string is less than length 3. Return n copies of the front;
-def front_times(str, n):
-    end_pos = min(len(str), 3)
-    front = str[:end_pos]
+def front_times(string, n):
+    end_pos = min(len(string), 3)
+    front = string[:end_pos]
     return front * n
 
 # Count the number of "xx" in the given string. We'll say that 
 # overlapping is allowed, so "xxx" contains 2 "xx".
-def count_xx(str):
-    matches = [i for i, _ in enumerate(str[:-1]) if str[i:i+2] == 'xx']
+def count_xx(string):
+    matches = [i for i, _ in enumerate(string[:-1]) if string[i:i+2] == 'xx']
     return len(matches)
 
 # Given a string, return true if the first instance of "x" in 
 # the string is immediately followed by another "x".
-def double_x(str):
-    first_occur = str.find('x')
-    second_occur = str.find('x', first_occur + 1)
+def double_x(string):
+    first_occur = string.find('x')
+    second_occur = string.find('x', first_occur + 1)
     return second_occur == (first_occur + 1) 
 
 # Given a string, return a new string made of every other char 
 # starting with the first, so "Hello" yields "Hlo".
-def string_bits(str):
-    return str[::2]
+def string_bits(string):
+    return string[::2]
 
 # Given a non-empty string like "Code" return a string like "CCoCodCode".
-def string_splosion(str):
-    lst_of_substrs = [str[:i] for i in range(1, len(str)+1)]
+def string_splosion(string):
+    lst_of_substrs = [string[:i] for i in range(1, len(string)+1)]
     return ''.join(lst_of_substrs)
 
 # Given a string, return the count of the number of times that a substring 
 # length 2 appears in the string and also as the last 2 chars of the string, 
 # so "hixxxhi" yields 1 (we won't count the end substring).
-def last2(str):
-    search_str = str[-2:]
-    occurrences = [i for i in range(len(str)) if str.startswith(search_str, i, -1)]
+def last2(string):
+    search_str = string[-2:]
+    occurrences = [i for i in range(len(string)) if string.startswith(search_str, i, -1)]
     return len(occurrences)
 
 # Given an array of ints, return the number of 9's in the array.
@@ -68,23 +68,23 @@ def string_match(a, b):
 
 # Given a string, return a version where all the "x" have been removed. 
 # Except an "x" at the very start or end should not be removed.
-def string_x(str):
-    middle = ''.join([char for char in str[1:-1] if char != 'x'])
-    return f"{str[0]}{middle}{str[-1]}" if len(str) > 1 else str
+def string_x(string):
+    middle = ''.join([char for char in string[1:-1] if char != 'x'])
+    return f"{string[0]}{middle}{string[-1]}" if len(string) > 1 else string
 
 # Given a string, return a string made of the cars at indexes 0,1, 4,5
 # 8,9 ... so "kittens" yields "kien".
-def alt_pairs(str):
-    return ''.join([char for index, char in enumerate(str) if (index % 4) in {0, 1}])
+def alt_pairs(string):
+    return ''.join([char for index, char in enumerate(string) if (index % 4) in {0, 1}])
 
 # Given a string, return a version where all the 'yak' are removed, but the 'a'
 # can by any char. The 'yak' string will not overlap.
-def string_yak(str):
+def string_yak(string):
     indexes = [(i, i+1, i+2) 
-               for i, _ in enumerate(str[:-2]) 
-               if str[i] == 'y' and str[i+2] == 'k' ]
+               for i, _ in enumerate(string[:-2]) 
+               if string[i] == 'y' and string[i+2] == 'k' ]
     flatten_indexes = [element for item in indexes for element in item]
-    return ''.join([x for i, x in enumerate(str) if i not in flatten_indexes])
+    return ''.join([x for i, x in enumerate(string) if i not in flatten_indexes])
 
 # Given an array of ints, return the number of times that two 6's are next to each other
 # in the array. Also count instances where the second '6' is actually a 7.
