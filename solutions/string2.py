@@ -4,16 +4,11 @@ def double_char(string):
 
 # Return the number of times that the string "hi" appears anywhere in the given string.
 def count_hi(string):
-    matches = [i for i, _ in enumerate(string[:-1]) if string[i:i+2] == 'hi']
-    return len(matches)
+    return string.count('hi')
 
 # Return true if the string "cat" and "dog" appear the same number of times in the given string.
 def cat_dog(string):
-    slice_len = 3  
-    count_matches = lambda search_str : len([i 
-                                             for i, _ in enumerate(string[:-(slice_len-1)]) 
-                                             if string[i:i+slice_len] == search_str])
-    return count_matches('cat') == count_matches('dog')
+    return string.count('cat') == string.count('dog')
 
 # Return the number of times that the string "code" appears anywhere in the given string, except 
 # we'll accept any letter for the 'd', so "cope" and "cooe" count.

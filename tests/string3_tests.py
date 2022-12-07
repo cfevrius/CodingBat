@@ -98,7 +98,7 @@ class TestString3(unittest.TestCase):
         self.assertEqual(string3.same_ends('javaXYZjava'), 'java')
         self.assertEqual(string3.same_ends('javajava'), 'java')
         self.assertEqual(string3.same_ends('xavaXYZjava'), '')
-        self.assertEqual(string3.same_ends('Hello! and Hello!'), 'Hello! and Hello!')
+        self.assertEqual(string3.same_ends('Hello! and Hello!'), 'Hello!')
         self.assertEqual(string3.same_ends('x'), '')
         self.assertEqual(string3.same_ends(''), '')
         self.assertEqual(string3.same_ends('abcb'),'' )

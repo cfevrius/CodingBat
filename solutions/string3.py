@@ -16,33 +16,51 @@ def count_yz(string):
 # the remove string is length 1 or more. Remove only non-overlapping instances, so with "xxx" 
 # removing "xx" leaves "x".
 def without_string(base, remove):
-    return None
+    base_without_removes = ' '.join([word 
+                                     for word in base.split() 
+                                     if word.lower() != remove.lower()])
+
+    # remove lowercase, uppercase, and exact matches 
+    removed_all_matches = base_without_removes.replace(remove.lower(), '').replace(remove.upper(), '').replace(remove, '')
+    return removed_all_matches
 
 # Given a string, return true if the number of appearances of "is" anywhere in the string is 
 # equal to the number of appearances of "not" anywhere in the string (case sensitive).
 def equal_is_not(string):
-    return None
+    return string.count('is') == string.count('not')
 
 # We'll say that a lowercase 'g' in a string is "happy" if there is another 'g' immediately to 
 # its left or right. Return true if all the g's in the given string are happy.
 def g_happy(string):
-    return None
+    get_char_at_index = lambda index: string[index] if 0 <= index <= len(string) - 1 else ''
+    are_gs_happy = ['g' in {get_char_at_index(i-1), get_char_at_index(i+1)} 
+                    for i, v in enumerate(string) if 
+                    v == 'g'] 
+    return all(are_gs_happy)
 
 # We'll say that a "triple" in a string is a char appearing three times in a row. Return the 
 # number of triples in the given string. The triples may overlap.
 def count_triple(string):
-    return None
+    triples = [i for i, _ in enumerate(string[:-2]) 
+               if {string[i], string[i+1], string[i+2]}.issubset({string[i]})]
+    return len(triples)
 
 # Given a string, return the sum of the digits 0-9 that appear in the string, ignoring all other
-# characters. Return 0 if there are no digits in the string. (Note: str.isdecimal(char) tests 
+# characters. Return 0 if there are no digits in the string. (Note: str.isdigit(char) tests 
 # if a char is one of the chars '0', '1', .. '9'. int(string) converts a string to an int.)
 def sum_digits(string):
-    return None
+    return sum([int(char) for char in string if str.isdigit(char)])
 
 # Given a string, return the longest substring that appears at both the beginning and end of the 
 # string without overlapping. For example, sameEnds("abXab") is "ab".
 def same_ends(string):
-    return None
+    front_back_substrings = [(string[:i], string[-i:]) 
+                             for i, v in enumerate(string[:len(string) // 2 + 1]) 
+                             if i != 0]
+    equal_substrings = [substring[0]
+                        for substring in front_back_substrings 
+                        if substring[0] == substring[1]]
+    return max(equal_substrings, default='', key=len)
 
 # Given a string, look for a mirror image (backwards) string at both the beginning and end of the 
 # given string. In other words, zero or more characters at the very begining of the given string, 
