@@ -42,7 +42,7 @@ def g_happy(string):
 # number of triples in the given string. The triples may overlap.
 def count_triple(string):
     triples = [i for i, _ in enumerate(string[:-2]) 
-               if {string[i], string[i+1], string[i+2]}.issubset({string[i]})]
+               if string[i] == string[i+1] == string[i+2]]
     return len(triples)
 
 # Given a string, return the sum of the digits 0-9 that appear in the string, ignoring all other
@@ -57,9 +57,9 @@ def same_ends(string):
     front_back_substrings = [(string[:i], string[-i:]) 
                              for i, v in enumerate(string[:len(string) // 2 + 1]) 
                              if i != 0]
-    equal_substrings = [substring[0]
-                        for substring in front_back_substrings 
-                        if substring[0] == substring[1]]
+    equal_substrings = [tup[0]
+                        for tup in front_back_substrings 
+                        if tup[0] == tup[1]]
     return max(equal_substrings, default='', key=len)
 
 # Given a string, look for a mirror image (backwards) string at both the beginning and end of the 
@@ -67,21 +67,50 @@ def same_ends(string):
 # and at the very end of the string in reverse order (possibly overlapping). For example, the string 
 # "abXYZba" has the mirror end "ab".
 def mirror_ends(string):
-    return None
+    front_back_substrings = [(string[:i], string[-i:])
+                             for i in range(len(string)+1)]
+    mirrored_substrings = [tup[0] 
+                           for tup in front_back_substrings 
+                           if tup[0] == tup[1][::-1]]
+    return max(mirrored_substrings, default='', key=len)
 
 # Given a string, return the length of the largest "block" in the string. A block is a run of adjacent 
 # chars that are the same.
 def max_block(string):
-    return None
+    string_len = len(string)
+    all_equal = lambda string: len(set(string)) == 1
+    longest_block_at_index = lambda index: max([len(string[index:i])
+                                                for i in range(string_len, index, -1)
+                                                if all_equal(string[index:i])], default='') 
+    blocks = [longest_block_at_index(index) for index, _ in enumerate(string)]
+    return max(blocks, default=0)
 
 # Given a string, return the sum of the numbers appearing in the string, ignoring all other characters. 
 # A number is a series of 1 or more digit chars in a row. (Note: str.isdecimal(char) tests if a char 
 # is one of the chars '0', '1', .. '9'. int(string) converts a string to an int.)
 def sum_numbers(string):
-    return None
+    string_with_only_digits = ''.join([char if str.isdigit(char) else ' ' 
+                                       for char in string])
+    str_numbers = string_with_only_digits.split()
+    return sum(int(num) for num in str_numbers)
 
 # Given a string, return a string where every appearance of the lowercase word "is" has been replaced with 
 # "is not". The word "is" should not be immediately preceeded or followed by a letter -- so for example the 
 # "is" in "this" does not count. (Note: str.isalpha(char) tests if a char is a letter.)
 def not_replace(string):
-    return None
+    # If the index of the string is not preceeded or followed by a letter and is not followed
+    # by the word 'not', this is the index of an 'is' that needs to be replaced.
+    get_char_at_index = lambda index: string[index] if 0 <= index <= len(string) - 1 else ''
+    is_invalid = lambda index: all([not str.isalpha(get_char_at_index(index-1)),
+                                    not str.isalpha(get_char_at_index(index+2)), 
+                                    string[index+3:index+6] != 'not'])
+    find_matches = lambda string : [i 
+                                    for i, v in enumerate(string) 
+                                    if string[i:i+2] == 'is' and is_invalid(i)]
+    
+    single_replacement = lambda string, index: f'{string[:index]}is not{string[index+2:]}'
+
+    while(find_matches(string)):
+        string = single_replacement(string, find_matches(string)[0])
+
+    return string
