@@ -182,39 +182,70 @@ def pre_4(nums):
 # array that come after the last 4 in the original array. The original array will contain at 
 # least one 4. Note that it is valid in Python to create an array of length 0.
 def post_4(nums):
-    return None
+    nums_str = ''.join(str(num) for num in nums)
+    post_4_str = nums_str[nums_str.rindex('4')+1:]
+    post_4_int = [int(char) for char in post_4_str]
+    return post_4_int
 
 # We'll say that an element in an array is "alone" if there are values before and after it, and 
 # those values are different from it. Return a version of the given array where every instance 
 # of the given value which is alone is replaced by whichever value to its left or right is larger.
 def not_alone(nums, val): 
-    return None
+    indices_of_alone = [i 
+                        for i, v in enumerate(nums) 
+                        if v == val and \
+                           1 <= i <= len(nums) - 2 and \
+                           nums[i-1] != v and nums[i+1] != v]
+    result = nums[:]
+    for index in indices_of_alone:
+        before = result[index-1]
+        after = result[index+1]
+        replacement = max(before, after)
+        result[index]= replacement
+    return result
 
 # Return an array that contains the exact same numbers as the given array, but rearranged so that 
 # all the zeros are grouped at the start of the array. The order of the non-zero numbers does not 
 # matter. So [1, 0, 0, 1] becomes [0 ,0, 1, 1]. You may modify and return the given array or make 
 # a new array.
 def zero_front(nums):
-    return None
+    zeroes = [0] * nums.count(0)
+    not_zeroes = [v for i, v in enumerate(nums) if v != 0]
+    return zeroes + not_zeroes
 
 # Return a version of the given array where all the 10's have been removed. The remaining elements 
 # should shift left towards the start of the array as needed, and the empty spaces a the end of 
 # the array should be 0. So [1, 10, 10, 2] yields [1, 2, 0, 0]. You may modify and return the 
 # given array or make a new array.
 def without_ten(nums):
-    return None
+    not_ten = [v for i, v in enumerate(nums) if v != 10]
+    zeroes = [0] * nums.count(10)
+    return not_ten + zeroes
 
 # Return a version of the given array where each zero value in the array is replaced by the 
 # largest odd value to the right of the zero in the array. If there is no odd value to the 
 # right of the zero, leave the zero as a zero.
 def zero_max(nums):
-    return None
+    def largest_odd_value_to_right(index): 
+        odd_numbers_to_right = [v for v in nums[index:] if v % 2 != 0]
+        if odd_numbers_to_right:
+            return max(odd_numbers_to_right)
+        else:
+            return 0
+
+    indices_of_zeroes = [i for i, val in enumerate(nums) if val == 0]
+    result = nums[:]
+    for index in indices_of_zeroes:
+        result[index] = largest_odd_value_to_right(index)
+    return result
 
 # Return an array that contains the exact same numbers as the given array, but rearranged so 
 # that all the even numbers come before all the odd numbers. Other than that, the numbers can 
 # be in any order. You may modify and return the given array, or make a new array.
 def even_odd(nums):
-    return None
+    evens = [num for num in nums if num % 2 == 0]
+    odds = [num for num in nums if num % 2 != 0]
+    return evens + odds
 
 # This is slightly more difficult version of the famous FizzBuzz problem which is sometimes 
 # given as a first problem for job interviews. (See also: FizzBuzz Code.) Consider the series 
@@ -226,4 +257,13 @@ def even_odd(nums):
 # the usual version since you have to allocate and index into an array instead of just printing, and 
 # we vary the start/end instead of just always doing 1..100.
 def fizz_buzz(start, end):
-    return None
+    def fizz(num):
+        if num % 3 == 0 and num % 5 == 0:
+            return "FizzBuzz"
+        elif num % 3 == 0:
+            return "Fizz"
+        elif num % 5 == 0:
+            return "Buzz"
+        else:
+            return str(num)
+    return [fizz(num) for num in range(start, end)]
