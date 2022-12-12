@@ -115,7 +115,7 @@ def mid_three(nums):
 # Given an array of ints of odd length, look at the first, last, and middle values in the array 
 # and return the largest. The array length will be a least 1.
 def max_triple(nums):
-    return sorted([nums[0], nums[len(nums) // 2], nums[-1] ])[-1]
+    return max([nums[0], nums[len(nums) // 2], nums[-1] ])
 
 # Given an int array of any length, return a new array of its first 2 elements. If the array is 
 # smaller than length 2, use whatever elements are present.
