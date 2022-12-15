@@ -86,11 +86,6 @@ def series_up(n):
 # mirror section in {1, 2, 3, 8, 9, 3, 2, 1} is length 3 (the {1, 2, 3} part). Return the size 
 # of the largest mirror section found in the given array.
 def max_mirror(nums):
-    '''
-    maxMirror([1, 2, 3, 8, 9, 3, 2, 1]) => 3
-    maxMirror([1, 2, 1, 4]) => 3
-    maxMirror([7, 1, 2, 9, 7, 2, 1]) => 2
-    '''
     all_contiguous_at_index = lambda index: [nums[index:index+i] 
                                              for i in range(1, len(nums) - index + 1)]                                            
     '''
