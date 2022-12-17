@@ -1,6 +1,3 @@
-import sys
-sys.path.append('')
-
 import unittest
 import solutions.logic2 as logic2
 

@@ -1,6 +1,3 @@
-import sys
-sys.path.append('')
-
 import unittest
 import solutions.string3 as string3
 

@@ -1,6 +1,3 @@
-import sys
-sys.path.append('')
-
 import unittest
 import solutions.warmup2 as warmup2
 
