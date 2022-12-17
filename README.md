@@ -1,4 +1,4 @@
-# Pythonic CodingBat Solutions! 
+# Pythonic CodingBat! 
 
 [CodingBat](https://codingbat.com/java) is a great website for solving beginner to intermediate programming challenges directly online. It has a section for Python and Java, but the Java section has *many* more problems. I decided to challenge myself to solve all of the Java problems in Python, along with using Python's built-in `unittest` library to create test suites for each problem set!
 
