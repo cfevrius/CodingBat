@@ -68,7 +68,7 @@ class TestFunctional2(unittest.TestCase):
         self.assertEqual(functional2.no_yy(["xx", "yay", "zz"]), ["xxy", "zzy"])
         self.assertEqual(functional2.no_yy(["yyx", "y", "zzz"]), ["zzzy"])
         self.assertEqual(functional2.no_yy(["hello", "there"]), ["helloy", "therey"])
-        self.assertEqual(functional2.no_yy(["ya"]), ["ya"])
+        self.assertEqual(functional2.no_yy(["ya"]), ["yay"])
         self.assertEqual(functional2.no_yy([]), [])
         self.assertEqual(functional2.no_yy([""]), ["y"])
         self.assertEqual(functional2.no_yy(["xx", "yy", "zz"]), ["xxy", "zzy"])
