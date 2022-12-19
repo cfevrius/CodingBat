@@ -1,5 +1,5 @@
 import unittest
-import solutions.string1 as string1
+import source.string1 as string1
 
 class TestString1(unittest.TestCase):
     def test_hello_names(self):

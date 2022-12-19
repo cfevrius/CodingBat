@@ -1,5 +1,5 @@
 import unittest
-import solutions.map1 as map1
+import source.map1 as map1
 
 class TestMap1(unittest.TestCase):
     def test_map_bully(self):

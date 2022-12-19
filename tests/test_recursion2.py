@@ -1,5 +1,5 @@
 import unittest
-import solutions.recursion2 as recursion2
+import source.recursion2 as recursion2
 
 class TestRecursion2(unittest.TestCase):
     def test_group_sum(self):

@@ -1,5 +1,5 @@
 import unittest
-import solutions.logic2 as logic2
+import source.logic2 as logic2
 
 class Logic2Test(unittest.TestCase):
     def test_make_bricks(self):

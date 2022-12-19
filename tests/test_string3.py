@@ -1,5 +1,5 @@
 import unittest
-import solutions.string3 as string3
+import source.string3 as string3
 
 class TestString3(unittest.TestCase):
     def test_count_yz(self):

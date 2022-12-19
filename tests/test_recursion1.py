@@ -1,5 +1,5 @@
 import unittest
-import solutions.recursion1 as recursion1
+import source.recursion1 as recursion1
 
 class TestRecursion1(unittest.TestCase):
     def test_factorial(self):

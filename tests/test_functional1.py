@@ -1,5 +1,5 @@
 import unittest
-import solutions.functional1 as funtional1
+import source.functional1 as funtional1
 
 class TestFunctional1(unittest.TestCase):
     def test_doubling(self):

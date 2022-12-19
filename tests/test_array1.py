@@ -1,5 +1,5 @@
 import unittest
-import solutions.array1 as array1
+import source.array1 as array1
 
 class TestArray1(unittest.TestCase):
     def test_first_last_6(self):

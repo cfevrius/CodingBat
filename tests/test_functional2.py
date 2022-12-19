@@ -1,5 +1,5 @@
 import unittest
-import solutions.functional2 as functional2
+import source.functional2 as functional2
 
 class TestFunctional2(unittest.TestCase):
     def test_no_neg(self):

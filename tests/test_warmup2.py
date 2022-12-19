@@ -1,5 +1,5 @@
 import unittest
-import solutions.warmup2 as warmup2
+import source.warmup2 as warmup2
 
 class TestWarmUp1(unittest.TestCase):
     def test_string_times(self):

@@ -1,5 +1,5 @@
 import unittest
-import solutions.ap1 as ap1
+import source.ap1 as ap1
 
 class TestAP1(unittest.TestCase):
     def test_scores_increasing(self):

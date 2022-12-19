@@ -1,5 +1,5 @@
 import unittest
-import solutions.warmup1 as warmup1
+import source.warmup1 as warmup1
 
 class TestWarmUp1(unittest.TestCase):
 

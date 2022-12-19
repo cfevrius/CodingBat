@@ -1,5 +1,5 @@
 import unittest
-import solutions.array3 as array3
+import source.array3 as array3
 
 class TestArray3(unittest.TestCase):
     def test_max_span(self):

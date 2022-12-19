@@ -1,5 +1,5 @@
 import unittest
-import solutions.string2 as string2
+import source.string2 as string2
 
 class TestsString2(unittest.TestCase):
     def test_double_char(self):

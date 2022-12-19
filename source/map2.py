@@ -3,32 +3,24 @@
 # string "hello" makes the pair "hello":0. We'll do more complicated counting 
 # later, but for this problem the value is simply 0.
 def word0(strings):
-    unique_strings = set(strings)
-    zeroes = (0,) * len(unique_strings)
-    return dict(zip(unique_strings, zeroes))
+    return {string: 0 for string in set(strings)}
 
 # Given an array of strings, return a Map<String, Integer> containing a key for 
 # every different string in the array, and the value is that string's length.
 def word_len(strings):
-    unique_strings = set(strings)
-    lengths = [len(string) for string in unique_strings]
-    return dict(zip(unique_strings, lengths))
+    return {string: len(string) for string in set(strings)}
 
 # Given an array of non-empty strings, create and return a Map<String, String> as 
 # follows: for each string add its first character as a key with its last character 
 # as the value.
 def pairs(strings):
-    first_chars = [string[0] for string in strings]
-    last_chars = [string[-1] for string in strings]
-    return dict(zip(first_chars, last_chars))
+    return {string[0] : string[-1] for string in strings}
 
 # The classic word-count algorithm: given an array of strings, return a Map<String, Integer> 
 # with a key for each different string, with the value the number of times that string appears 
 # in the array.
 def word_count(strings):
-    unique_strings = set(strings)
-    count = [strings.count(string) for string in unique_strings]
-    return dict(zip(unique_strings, count))
+    return {string: strings.count(string) for string in set(strings)}
 
 # Given an array of non-empty strings, return a Map<String, String> with a key for every 
 # different first character seen, with the value of all the strings starting with that 
@@ -38,8 +30,7 @@ def first_char(strings):
     all_strings_with_first_char = lambda char: ''.join([string 
                                                         for string in strings 
                                                         if string.startswith(char)])
-    appended_strings = [all_strings_with_first_char(char) for char in unique_first_chars]
-    return dict(zip(unique_first_chars, appended_strings))
+    return {char : all_strings_with_first_char(char) for char in unique_first_chars}
 
 # Loop over the given array of strings to build a result string like this: when a string 
 # appears the 2nd, 4th, 6th, etc. time in the array, append the string to the result. 
@@ -59,9 +50,7 @@ def word_appends(strings):
 # Given an array of strings, return a Map<String, Boolean> where each different string is 
 # a key and its value is true if that string appears 2 or more times in the array.
 def word_multiple(strings):
-    unique_strings = set(strings)
-    appears_two_plus = [strings.count(string) >= 2 for string in unique_strings]
-    return dict(zip(unique_strings, appears_two_plus))
+    return {string: strings.count(string) >= 2 for string in set(strings)}
 
 # We'll say that 2 strings "match" if they are non-empty and their first chars are the same. 
 # Loop over and then return the given array of non-empty strings as follows: if a string matches 

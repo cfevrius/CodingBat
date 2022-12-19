@@ -1,5 +1,5 @@
 import unittest
-import solutions.map2 as map2
+import source.map2 as map2
 
 class TestMap2(unittest.TestCase):
     def test_word0(self):

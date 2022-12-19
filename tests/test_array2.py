@@ -1,5 +1,5 @@
 import unittest
-import solutions.array2 as array2
+import source.array2 as array2
 
 class TestArray2(unittest.TestCase):
     def test_count_evens(self):

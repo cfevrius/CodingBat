@@ -1,5 +1,5 @@
 import unittest
-import solutions.logic1 as logic1
+import source.logic1 as logic1
 
 class Logic1Test(unittest.TestCase):
     def test_cigar_party(self):
