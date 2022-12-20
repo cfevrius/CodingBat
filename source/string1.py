@@ -104,8 +104,7 @@ def middle_three(string):
 # with "badxxx" or "xbadxx" but not "xxbadxx". The string may be any length, including 0. 
 # Note: use == to compare 2 strings.
 def has_bad(string):
-    matches = [i for i, _ in enumerate(string[-3:]) if string[i:i+3] == 'bad']
-    return 0 in matches or 1 in matches
+    return string.startswith('bad', 0) or string.startswith('bad', 1)
 
 # Given a string, return a string length 2 made of its first 2 chars. If the string length is 
 # less than 2, use '@' for the missing chars.

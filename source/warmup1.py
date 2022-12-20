@@ -149,12 +149,11 @@ def in_3040(a, b):
 # return 0 if neither is in that range.
 def max_1020(a, b):
     nums_in_range = [x for x in [a, b] if 10 <= x <= 20]
-    return 0 if len(nums_in_range) == 0 else max(nums_in_range)
+    return max(nums_in_range, default=0)
 
 # Return true if the given string contains between 1 and 3 'e' chars.
 def string_e(string):
-    num_es = string.count('e')
-    return 1 <= num_es <= 3
+    return 1 <= string.count('e') <= 3
 
 # Given two non-negative int values, return true if they have the same last digit, such as with 27 
 # and 57. Note that the % "mod" operator computes remainders, so 17 % 10 is 7.

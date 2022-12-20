@@ -8,19 +8,18 @@ def max_span(nums):
         last = nums_str.rindex(str(num))
         return (last - first) + 1
     all_spans = [find_span(v) for i, v in enumerate(nums)]
-    return max(all_spans) if all_spans else 0
+    return max(all_spans, default=0)
 
 # Return an array that contains exactly the same numbers as the given array, but rearranged so 
 # that every 3 is immediately followed by a 4. Do not move the 3's, but every other number may 
 # move. The array contains the same number of 3's and 4's, every 3 has a number after it that is 
 # not a 3, and a 3 appears in the array before any 4.
 def fix_34(nums):
-    index_of_4s = [i for i, val in enumerate(nums) if val == 4]
-
     def swap(index1, index2):
         nums[index1], nums[index2] = nums[index2], nums[index1]
 
-    for index in index_of_4s:
+    indices_of_4s = [i for i, val in enumerate(nums) if val == 4]
+    for index in indices_of_4s:
         if nums[index - 1] != 3:
             available_3s = [i 
                             for i, val in enumerate(nums) 
@@ -35,12 +34,11 @@ def fix_34(nums):
 # of 4's and 5's, and every 4 has a number after it that is not a 4. In this version, 5's may 
 # appear anywhere in the original array.
 def fix_45(nums):
-    index_of_5s = [i for i, val in enumerate(nums) if val == 5]
-
     def swap(index1, index2):
         nums[index1], nums[index2] = nums[index2], nums[index1]
     
-    for index in index_of_5s:
+    indices_of_5s = [i for i, val in enumerate(nums) if val == 5]
+    for index in indices_of_5s:
         if nums[index - 1] != 4:
             available_4s = [i 
                             for i, val in enumerate(nums) 
@@ -69,8 +67,8 @@ def square_up(n):
         zeroes = [0] * (group_size - num)
         nums   = range(1, num + 1)
         return zeroes + list(reversed(nums))
-    group_of_groups = [create_group(i , n) for i in range(1, n+1)]
-    flattened_groups = [item for group in group_of_groups for item in group]
+    nested_groups = [create_group(i , n) for i in range(1, n+1)]
+    flattened_groups = [item for group in nested_groups for item in group]
     return flattened_groups
 
 # Given n>=0, create an array with the pattern {1,    1, 2,    1, 2, 3,   ... 1, 2, 3 .. n} 

@@ -230,8 +230,8 @@ def blue_ticket(a, b, c):
 # % "mod" n%10 gives the right digit.)
 def share_digit(a, b):
     find_digits = lambda x : (x // 10, x % 10)
-    is_in_b = lambda x : x in find_digits(b)
-    return any(map(is_in_b, find_digits(a)))
+    common_digits = set(find_digits(a)).intersection(set(find_digits(b)))
+    return len(common_digits) > 0
 
 # Given 2 non-negative ints, a and b, return their sum, so long as the sum has the same number of 
 # digits as a. If the sum has more digits than a, just return a without b. (Note: one way to 

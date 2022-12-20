@@ -110,7 +110,7 @@ def not_replace(string):
     
     single_replacement = lambda string, index: f'{string[:index]}is not{string[index+2:]}'
 
-    while(find_matches(string)):
+    while(len(find_matches(string)) > 0):
         string = single_replacement(string, find_matches(string)[0])
 
     return string

@@ -124,8 +124,8 @@ def mod_three(nums):
 # Given an array of ints, return true if the value 3 appears in the array exactly 3 times, and 
 # no 3's are next to each other.
 def have_three(nums):
-    matches = [i for i, val in enumerate(nums[:-1]) if val == 3 and nums[i+1] == 3]
-    return nums.count(3) == 3 and not matches
+    consecutive_threes = [i for i, val in enumerate(nums[:-1]) if val == 3 and nums[i+1] == 3]
+    return nums.count(3) == 3 and len(consecutive_threes) == 0
 
 # Given an array of ints, return true if every 2 that appears in the array is next to another 2.
 def two_two(nums):
@@ -163,13 +163,13 @@ def shift_left(nums):
 # of 10, until encountering another multiple of 10. So [2, 10, 3, 4, 20, 5] yields 
 # [2, 10, 10, 10, 20, 20].
 def ten_run(nums):
-    index_of_multiples_of_ten = [(i, val) for i, val in enumerate(nums) if val % 10 == 0]
+    indices_of_multiples_of_ten = [(i, val) for i, val in enumerate(nums) if val % 10 == 0]
     result = nums[:]
-    # index_of_multiples_of_ten = [(1, 10), (4, 20)]
-    for i, v in enumerate(index_of_multiples_of_ten):
-        start = index_of_multiples_of_ten[i][0]
-        end = index_of_multiples_of_ten[i+1][0] if 0 <= i+1 < len(index_of_multiples_of_ten) else len(nums)
-        result[start:end] = (end - start) * [index_of_multiples_of_ten[i][1]]
+    # indices_of_multiples_of_ten = [(1, 10), (4, 20)]
+    for i, v in enumerate(indices_of_multiples_of_ten):
+        start = indices_of_multiples_of_ten[i][0]
+        end = indices_of_multiples_of_ten[i+1][0] if 0 <= i+1 < len(indices_of_multiples_of_ten) else len(nums)
+        result[start:end] = (end - start) * [indices_of_multiples_of_ten[i][1]]
     return result
 
 # Given a non-empty array of ints, return a new array containing the elements from the original 
@@ -228,10 +228,7 @@ def without_ten(nums):
 def zero_max(nums):
     def largest_odd_value_to_right(index): 
         odd_numbers_to_right = [v for v in nums[index:] if v % 2 != 0]
-        if odd_numbers_to_right:
-            return max(odd_numbers_to_right)
-        else:
-            return 0
+        return max(odd_numbers_to_right, default=0)
 
     indices_of_zeroes = [i for i, val in enumerate(nums) if val == 0]
     result = nums[:]

@@ -7,8 +7,7 @@ def string_times(string, n):
 # the front of the string is the first 3 chars, or whatever is there 
 # if the string is less than length 3. Return n copies of the front;
 def front_times(string, n):
-    end_pos = min(len(string), 3)
-    front = string[:end_pos]
+    front = string[:3]
     return front * n
 
 # Count the number of "xx" in the given string. We'll say that 
@@ -39,7 +38,7 @@ def string_splosion(string):
 # so "hixxxhi" yields 1 (we won't count the end substring).
 def last2(string):
     search_str = string[-2:]
-    occurrences = [i for i in range(len(string)) if string.startswith(search_str, i, -1)]
+    occurrences = [i for i, _ in enumerate(string[:-2]) if string[i:i+2] == search_str]
     return len(occurrences)
 
 # Given an array of ints, return the number of 9's in the array.
@@ -72,7 +71,7 @@ def string_x(string):
     middle = ''.join([char for char in string[1:-1] if char != 'x'])
     return f"{string[0]}{middle}{string[-1]}" if len(string) > 1 else string
 
-# Given a string, return a string made of the cars at indexes 0,1, 4,5
+# Given a string, return a string made of the cars at indices 0,1, 4,5
 # 8,9 ... so "kittens" yields "kien".
 def alt_pairs(string):
     return ''.join([char for index, char in enumerate(string) if (index % 4) in {0, 1}])
@@ -80,11 +79,11 @@ def alt_pairs(string):
 # Given a string, return a version where all the 'yak' are removed, but the 'a'
 # can by any char. The 'yak' string will not overlap.
 def string_yak(string):
-    indexes = [(i, i+1, i+2) 
+    indices = [(i, i+1, i+2) 
                for i, _ in enumerate(string[:-2]) 
                if string[i] == 'y' and string[i+2] == 'k' ]
-    flatten_indexes = [element for item in indexes for element in item]
-    return ''.join([x for i, x in enumerate(string) if i not in flatten_indexes])
+    flatten_indices = [element for item in indices for element in item]
+    return ''.join([x for i, x in enumerate(string) if i not in flatten_indices])
 
 # Given an array of ints, return the number of times that two 6's are next to each other
 # in the array. Also count instances where the second '6' is actually a 7.

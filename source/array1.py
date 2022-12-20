@@ -65,7 +65,7 @@ def no_2_3(nums):
 # The original array will be length 1 or more. Note: by default, a new int array 
 # contains all 0's.
 def make_last(nums):
-    return ((( len(nums) * 2) - 1) * [0]) + [nums[-1]]
+    return (((len(nums) * 2) - 1) * [0]) + [nums[-1]]
 
 # Given an int array, return true if the array contains 2 twice, or 3 twice. The array 
 # will be length 0, 1, or 2.
@@ -75,15 +75,15 @@ def double_2_3(nums):
 # Given an int array length 3, if there is a 2 in the array immediately followed by a 3, set 
 # the 3 element to 0. Return the changed array.
 def fix_2_3(nums):
-    matches = [i + 1 for i, _ in enumerate(nums[:-1]) if nums[i] == 2 and nums[i + 1] == 3]
-    for match in matches:
+    matching_indices = [i + 1 for i, _ in enumerate(nums[:-1]) if nums[i] == 2 and nums[i + 1] == 3]
+    for match in matching_indices:
         nums[match] = 0
     return nums
 
 # Start with 2 int arrays, a and b, of any length. Return how many of the arrays have 1 as 
 # their first element.
 def start_1(a, b):
-    matches = [x for x in [a, b] if x and x[0] == 1]
+    matches = [x for x in [a, b] if len(x) > 0 and x[0] == 1]
     return len(matches)
 
 # Start with 2 int arrays, a and b, each length 2. Consider the sum of the values in each 

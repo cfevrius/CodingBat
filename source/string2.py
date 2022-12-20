@@ -131,19 +131,19 @@ def zip_zap(string):
 # Return a version of the given string, where for every star (*) in the string the star and the chars immediately to its left 
 # and right are gone. So "ab*cd" yields "ad" and "ab**cd" also yields "ad".
 def star_out(string):
-    indices_to_remove = [(i - 1, i, i + 1)
+    nested_indices_to_remove = [(i - 1, i, i + 1)
                          for i, v in enumerate(string)
                          if v == '*']
 
-    flattened_indices_to_remove = [item for tup in indices_to_remove for item in tup]
+    flattened_indices_to_remove = [item for tup in nested_indices_to_remove for item in tup]
     return ''.join([char for i, char in enumerate(string) if i not in flattened_indices_to_remove]) 
 
 # Given a string and a non-empty word string, return a version of the original String where all chars have been replaced by pluses 
 # ("+"), except for appearances of the word string which are preserved unchanged.
 def plus_out(string, word):
     word_len = len(word)
-    indices_to_ignore = [range(i,i+word_len) for i, v in enumerate(string) if string[i:i+word_len] == word]
-    flattened_indices_to_ignore = [num for seq in indices_to_ignore for num in seq]
+    nested_indices_to_ignore = [range(i,i+word_len) for i, v in enumerate(string) if string[i:i+word_len] == word]
+    flattened_indices_to_ignore = [num for seq in nested_indices_to_ignore for num in seq]
     return ''.join([v if i in flattened_indices_to_ignore else '+' for i, v in enumerate(string)])
     
 # Given a string and a non-empty word string, return a string made of each char just before and just after every appearance of the 

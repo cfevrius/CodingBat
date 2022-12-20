@@ -14,9 +14,7 @@ def make_bricks(small, big, goal):
 # Given 3 int values, a b c, return their sum. However, if one of the values is 
 # the same as another of the values, it does not count towards the sum.
 def lone_sum(a, b, c):
-    nums = (a, b, c)
-    occurrences = (nums.count(a), nums.count(b), nums.count(c))
-    num_freq = dict(zip(nums, occurrences))
+    num_freq = {num: (a, b, c).count(num) for num in (a, b, c)}
     return sum([key for key, val in num_freq.items() if val == 1])
 
 # Given 3 int values, a b c, return their sum. However, if one of the values is 13 
@@ -25,7 +23,7 @@ def lone_sum(a, b, c):
 def lucky_sum(a, b, c):
     nums = (a, b, c)
     index_13 = [index for index, val in enumerate(nums) if val == 13]
-    new_lst = nums if not index_13 else nums[:index_13[0]]
+    new_lst = nums if len(index_13) == 0 else nums[:index_13[0]]
     return sum(new_lst)
 
 # Given 3 int values, a b c, return their sum. However, if any of the values is a teen 
