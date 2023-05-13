@@ -11,8 +11,8 @@ def big_diff(nums):
 def centered_average(nums):
     """Return the "centered" average of an array of ints, which we'll say is the mean average of 
     the values, except ignoring the largest and smallest values in the array. If there are multiple 
-    copies of the smallest value, ignore just one copy, and likewise for the largest value. Use int 
-    division to produce the final average. You may assume that the array is length 3 or more.
+    copies of the smallest value, ignore just one copy, and likewise for the largest value. You may 
+    assume that the array is length 3 or more.
     """
     centered = sorted(nums)[1:-1]
     avg = sum(centered) // len(centered)
@@ -272,15 +272,10 @@ def even_odd(nums):
     return evens + odds
 
 def fizz_buzz(start, end):
-    """This is slightly more difficult version of the famous FizzBuzz problem which is sometimes 
-    given as a first problem for job interviews. (See also: FizzBuzz Code.) Consider the series 
-    of numbers beginning at start and running up to but not including end, so for example start=1 
-    and end=5 gives the series 1, 2, 3, 4. Return a new List[str] array containing the string form 
-    of these numbers, except for multiples of 3, use "Fizz" instead of the number, for multiples 
-    of 5 use "Buzz", and for multiples of both 3 and 5 use "FizzBuzz". In Python, str(xxx) 
-    will make the string form of an int or other type. This version is a little more complicated than 
-    the usual version since you have to allocate and index into an array instead of just printing, and 
-    we vary the start/end instead of just always doing 1..100.
+    """Consider the series of numbers beginning at start and running up to but not including end, 
+    so for example start=1 and end=5 gives the series 1, 2, 3, 4. Return a new array containing 
+    the string form of these numbers, except for multiples of 3, use "Fizz" instead of the number, 
+    for multiples of 5 use "Buzz", and for multiples of both 3 and 5 use "FizzBuzz".
     """
     def fizz(num):
         if num % 3 == 0 and num % 5 == 0:

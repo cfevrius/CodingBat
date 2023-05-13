@@ -49,7 +49,7 @@ def words_front(words, n):
 
 def words_without_list(words, length):
     """Given an array of strings, return a new List where all the strings of the given length 
-    are omitted. See words_without() below which is more difficult because it uses arrays.
+    are omitted. 
     """
     words_without = [word for word in words if len(word) != length]
     return words_without
