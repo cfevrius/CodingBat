@@ -52,10 +52,7 @@ def triangle(rows):
         return rows + triangle(rows - 1)
 
 def sum_digits(n):     
-    """Given a non-negative int n, return the sum of its digits recursively (no loops). Note that 
-    mod (%) by 10 yields the rightmost digit (126 % 10 is 6), while divide (//) by 10 removes the 
-    rightmost digit (126 / 10 is 12).
-    """
+    """Given a non-negative int n, return the sum of its digits recursively."""
     if n == 0:
         return 0
     else:
@@ -64,8 +61,7 @@ def sum_digits(n):
 def count7(n):
     """
     Given a non-negative int n, return the count of the occurrences of 7 as a digit, so for 
-    example 717 yields 2. (no loops). Note that mod (%) by 10 yields the rightmost digit 
-    (126 % 10 is 6), while divide (/) by 10 removes the rightmost digit (126 / 10 is 12).
+    example 717 yields 2. 
     """
     if n == 0:
         return 0
@@ -75,10 +71,9 @@ def count7(n):
         return count7(n // 10)
 
 def count8(n):
-    """Given a non-negative int n, compute recursively (no loops) the count of the occurrences of 
+    """Given a non-negative int n, compute recursively the count of the occurrences of 
     8 as a digit, except that an 8 with another 8 immediately to its left counts double, so 8818 
-    yields 4. Note that mod (%) by 10 yields the rightmost digit (126 % 10 is 6), while divide 
-    (/) by 10 removes the rightmost digit (126 / 10 is 12).  
+    yields 4. 
     """
     if n == 0:
         return 0
@@ -90,7 +85,7 @@ def count8(n):
         return count8(n // 10)
 
 def power_n(base, n):
-    """Given base and n that are both 1 or more, compute recursively (no loops) the value of base 
+    """Given base and n that are both 1 or more, compute recursively the value of base 
     to the n power, so powerN(3, 2) is 9 (3 squared).
     """
     if n == 0:
@@ -99,7 +94,7 @@ def power_n(base, n):
         return base * power_n(base, n - 1)
 
 def count_x(str):
-    """Given a string, compute recursively (no loops) the number of lowercase 'x' chars in the string."""
+    """Given a string, compute recursively the number of lowercase 'x' chars in the string."""
     if str == "":
         return 0
     elif str[0] == 'x':

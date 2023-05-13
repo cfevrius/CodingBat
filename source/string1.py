@@ -18,8 +18,7 @@ def make_tags(tag, word):
 
 def make_out_word(out, word):
     """Given an "out" string length 4, such as "<<>>", and a word, return a new string where 
-    the word is in the middle of the out string, e.g. "<<word>>". Note: use str[i:j] to 
-    extract the string starting at index i and going up to but not including index j.
+    the word is in the middle of the out string, e.g. "<<word>>". 
     """
     return f'{out[:2]}{word}{out[-2:]}'
 
@@ -32,8 +31,7 @@ def extra_end(string):
 def first_two(string):
     """Given a string, return the string made of its first two chars, so the String "Hello" 
     yields "He". If the string is shorter than length 2, return whatever there is, so "X" 
-    yields "X", and the empty string "" yields the empty string "". Note that len(str) returns 
-    the length of a string.
+    yields "X", and the empty string "" yields the empty string "". 
     """
     return string[:2]
 
@@ -119,7 +117,6 @@ def middle_three(string):
 def has_bad(string):
     """Given a string, return true if "bad" appears starting at index 0 or 1 in the string, such as 
     with "badxxx" or "xbadxx" but not "xxbadxx". The string may be any length, including 0. 
-    Note: use == to compare 2 strings.
     """
     return string.startswith('bad', 0) or string.startswith('bad', 1)
 

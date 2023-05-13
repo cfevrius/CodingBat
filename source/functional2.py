@@ -4,7 +4,7 @@ def no_neg(nums):
 
 def no_9(nums):
     """Given a list of non-negative integers, return a list of those numbers except omitting any 
-    that end with 9. (Note: % by 10)
+    that end with 9. 
     """
     return list(filter(lambda num: num % 10 != 9, nums))
 
@@ -16,7 +16,7 @@ def no_teen(nums):
 
 def no_z(strings):
     """Given a list of strings, return a list of the strings, omitting any string that contains 
-    a "z". (Note: the x in str returns a boolean)
+    a "z". 
     """
     return list(filter(lambda string: 'z' not in string, strings))
 

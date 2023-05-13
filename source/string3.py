@@ -2,7 +2,7 @@ def count_yz(string):
     """Given a string, count the number of words ending in 'y' or 'z' -- so the 'y' in "heavy" 
     and the 'z' in "fez" count, but not the 'y' in "yellow" (not case sensitive). We'll say 
     that a y or z is at the end of a word if there is not an alphabetic letter immediately 
-    following it. (Note: str.isalpha(char) tests if a char is an alphabetic letter.)
+    following it. 
     """
     only_alphas = ''.join([v if str.isalpha(v) else ' ' 
                            for i, v in enumerate(string)])
@@ -54,8 +54,7 @@ def count_triple(string):
 
 def sum_digits(string):
     """Given a string, return the sum of the digits 0-9 that appear in the string, ignoring all other
-    characters. Return 0 if there are no digits in the string. (Note: str.isdigit(char) tests 
-    if a char is one of the chars '0', '1', .. '9'. int(string) converts a string to an int.)
+    characters. Return 0 if there are no digits in the string. 
     """
     return sum([int(char) for char in string if str.isdigit(char)])
 
@@ -102,8 +101,7 @@ def max_block(string):
 
 def sum_numbers(string):
     """Given a string, return the sum of the numbers appearing in the string, ignoring all other characters. 
-    A number is a series of 1 or more digit chars in a row. (Note: str.isdecimal(char) tests if a char 
-    is one of the chars '0', '1', .. '9'. int(string) converts a string to an int.)
+    A number is a series of 1 or more digit chars in a row. 
     """
     string_with_only_digits = ''.join([char if str.isdigit(char) else ' ' 
                                        for char in string])
@@ -113,7 +111,7 @@ def sum_numbers(string):
 def not_replace(string):
     """Given a string, return a string where every appearance of the lowercase word "is" has been replaced with 
     "is not". The word "is" should not be immediately preceeded or followed by a letter -- so for example the 
-    "is" in "this" does not count. (Note: str.isalpha(char) tests if a char is a letter.)
+    "is" in "this" does not count. 
     """
     def get_char_at_index(index):
         return string[index] if 0 <= index <= len(string) - 1 else ''

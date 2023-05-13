@@ -1,13 +1,10 @@
 def count_evens(nums):
-    """Return the number of even ints in the given array. Note: the % "mod" operator computes the 
-    remainder, e.g. 5 % 2 is 1.
-    """
+    """Return the number of even ints in the given array."""
     return len([num for num in nums if num % 2 == 0])
 
 def big_diff(nums):
     """Given an array length 1 or more of ints, return the difference between the largest and 
-    smallest values in the array. Note: the built-in min(v1, v2) and max(v1, v2) methods 
-    return the smaller or larger of two values.
+    smallest values in the array. 
     """
     return max(nums) - min(nums)
 
@@ -74,9 +71,7 @@ def only_14(nums):
 
 def fizz_array_2(n):
     """Given a number n, create and return a new string list of length n, containing the strings "0", 
-    "1" "2" .. through n-1. N may be 0, in which case just return a length 0 array. Note: str(xxx) 
-    will make the String form of most types. The syntax to make a new string list is: 
-    desired_length * [] or list(range(desired_length))
+    "1" "2" .. through n-1. N may be 0, in which case just return a length 0 array.
     """
     return list(str(x) for x in range(n))
 
@@ -177,7 +172,7 @@ def triple_up(nums):
 def fizz_array_3(start, end):
     """Given start and end numbers, return a new array containing the sequence of integers from start 
     up to but not including end, so start=5 and end=10 yields [5, 6, 7, 8, 9]. The end number will 
-    be greater or equal to the start number. Note that a length-0 array is valid.
+    be greater or equal to the start number. 
     """
     return list(range(start, end))
 
@@ -204,14 +199,14 @@ def ten_run(nums):
 def pre_4(nums):
     """Given a non-empty array of ints, return a new array containing the elements from the original 
     array that come before the first 4 in the original array. The original array will contain at 
-    least one 4. Note that it is valid in Python to create an array of length 0.
+    least one 4. 
     """
     return nums[:nums.index(4)]
 
 def post_4(nums):
     """Given a non-empty array of ints, return a new array containing the elements from the original 
     array that come after the last 4 in the original array. The original array will contain at 
-    least one 4. Note that it is valid in Python to create an array of length 0.
+    least one 4. 
     """
     nums_str = ''.join(str(num) for num in nums)
     post_4_str = nums_str[nums_str.rindex('4')+1:]

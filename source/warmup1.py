@@ -39,8 +39,7 @@ def makes_10(a, b):
     return 10 in {a, b, a + b}
 
 def near_hundred(n):
-    """Given an int n, return true if it is within 10 of 100 or 200. Note: abs(num) computes the 
-    absolute value of a number.
+    """Given an int n, return true if it is within 10 of 100 or 200. 
     """
     return abs(n - 100) <= 10 or abs(n - 200) <= 10
 
@@ -152,7 +151,7 @@ def int_max(a, b, c):
 
 def close_10(a, b):
     """Given 2 int values, return whichever value is nearest to the value 10, or return 0 in the event 
-    of a tie. Note that abs(n) returns the absolute value of a number.
+    of a tie. 
     """
     a_dist_10 = abs(10 - a)
     b_dist_10 = abs(10 - b)
@@ -179,7 +178,7 @@ def string_e(string):
 
 def last_digit(a, b):
     """Given two non-negative int values, return true if they have the same last digit, such as with 27 
-    and 57. Note that the % "mod" operator computes remainders, so 17 % 10 is 7.
+    and 57. 
     """
     a_last_digit = a % 10
     b_last_digit = b % 10
@@ -187,8 +186,7 @@ def last_digit(a, b):
 
 def end_up(string):
     """Given a string, return a new string where the last 3 chars are now in upper case. If the string has 
-    less than 3 chars, uppercase whatever is there. Note that string.upper() returns the uppercase version 
-    of a string.
+    less than 3 chars, uppercase whatever is there.
     """
     front = string[:-3]
     end = string[-3:]

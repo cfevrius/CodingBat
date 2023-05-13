@@ -24,7 +24,6 @@ def end_other(a, b):
     """
     Given two strings, return true if either of the strings appears at the very end of the other string, 
     ignoring upper/lower case differences (in other words, the computation should not be "case sensitive"). 
-    Note: string.lower() returns the lowercase version of a string.
     """
     def does_end(a, b): 
         return a.lower().endswith(b.lower())

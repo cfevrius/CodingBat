@@ -65,8 +65,7 @@ def alarm_clock(day, vacation):
 
 def love_6(a, b):
     """The number 6 is a truly great number. Given two int values, a and b, return true if 
-    either one is 6. Or if their sum or difference is 6. Note: the function abs(num) computes 
-    the absolute value of a number.
+    either one is 6. Or if their sum or difference is 6. 
     """
     return 6 in {a, b, a+b, abs(a-b)} 
 
@@ -99,9 +98,7 @@ def less_20(n):
     return 0 in {(n + 1) % 20, (n + 2) % 20}
 
 def near_ten(num):
-    """Given a non-negative number "num", return true if num is within 2 of a multiple of 10. 
-    Note: (a % b) is the remainder of dividing a by b, so (7 % 5) is 2.
-    """
+    """Given a non-negative number "num", return true if num is within 2 of a multiple of 10."""
     return num % 10 in {0, 1, 2, 8, 9} 
 
 def teen_sum(a, b):
@@ -180,7 +177,7 @@ def in_order_equal(a, b, c, equal_ok):
 
 def last_digit(a, b, c):
     """Given three ints, a b c, return true if two or more of them have the same rightmost digit. The ints 
-    are non-negative. Note: the % "mod" operator computes the remainder, e.g. 17 % 10 is 7.
+    are non-negative. 
     """
     right_digits = map(lambda x : x % 10, [a, b, c])
     return len(set(right_digits)) < 3
@@ -204,8 +201,7 @@ def without_doubles(die_1, die_2, no_doubles):
 def max_mod_5(a, b):
     """Given two int values, return whichever value is larger. However if the two values have the same 
     remainder when divided by 5, then the return the smaller value. However, in all cases, if the 
-    two values are the same, return 0. Note: the % "mod" operator computes the remainder, 
-    e.g. 7 % 5 is 2.
+    two values are the same, return 0.
     """
     if a == b:
         return 0
@@ -260,8 +256,7 @@ def blue_ticket(a, b, c):
 
 def share_digit(a, b):
     """Given two ints, each in the range 10..99, return true if there is a digit that appears in both 
-    numbers, such as the 2 in 12 and 23. (Note: division, e.g. n//10, gives the left digit while the 
-    % "mod" n%10 gives the right digit.)
+    numbers, such as the 2 in 12 and 23. 
     """
     def find_digits(x):
         return  (x // 10, x % 10)
@@ -271,9 +266,7 @@ def share_digit(a, b):
 
 def sum_limit(a, b):
     """Given 2 non-negative ints, a and b, return their sum, so long as the sum has the same number of 
-    digits as a. If the sum has more digits than a, just return a without b. (Note: one way to 
-    compute the number of digits of a non-negative int n is to convert it to a string with 
-    String.valueOf(n) and then check the length of the string.) 
+    digits as a. If the sum has more digits than a, just return a without b. 
     """
     def num_digits(x):
         return len(str(x))
