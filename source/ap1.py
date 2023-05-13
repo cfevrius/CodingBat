@@ -78,8 +78,7 @@ def copy_evens(nums, count):
 def copy_endy(nums, count):
     """We'll say that a positive int n is "endy" if it is in the range 0..10 or 90..100 (inclusive). 
     Given an array of positive ints, return a new array of length "count" containing the first endy 
-    numbers from the original array. Decompose out a separate isEndy(int n) method to test if a 
-    number is endy. The original array will contain at least "count" endy numbers.
+    numbers from the original array. The original array will contain at least "count" endy numbers.
     """
     def is_endy(num):
         return  (0 <= num <= 10) or (90 <= num <= 100)
@@ -126,8 +125,7 @@ def words_without(words, target):
 def scores_special(a, b):
     """Given two arrays, A and B, of non-negative int scores. A "special" score is one which is a 
     multiple of 10, such as 40 or 90. Return the sum of the largest special score in A and the largest 
-    special score in B. To practice decomposition, write a separate helper method which finds the 
-    largest special score in an array. 
+    special score in B.
     """
     def max_special(nums): 
         return max([num for num in nums if num % 10 == 0], default=0)

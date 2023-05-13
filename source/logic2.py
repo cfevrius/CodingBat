@@ -32,10 +32,7 @@ def lucky_sum(a, b, c):
 def no_teen_sum(a, b, c):
     """Given 3 int values, a b c, return their sum. However, if any of the values is a teen 
     -- in the range 13..19 inclusive -- then that value counts as 0, except 15 and 16 do 
-    not count as a teens. Write a separate function, fix_teen, that takes 
-    in an int value and returns that value fixed for the teen rule. In this way, you avoid 
-    repeating the teen code 3 times (i.e. "decomposition"). Define the nested helper function 
-    within the body of no_teen_sum. 
+    not count as a teens.
     """
     def fix_teen(num):
         return 0 if 13 <= num <= 19 and num not in {15, 16} else num
